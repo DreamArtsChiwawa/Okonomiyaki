@@ -1,1 +1,0 @@
-curl -X POST --data '{"type":"message", "companyId": "staging-3f202538-fccf-4f9a-8b1c-5516", "message":{"groupId":"-KsTErqpRBX2doUHBYbm","type":"text","text":"こんにちは","createdUserName":"山田　太郎"}}' --header "Content-Type: application/json" --header "X-Chiwawa-Webhook-Token: 9f9e48e1b864a81f20c8549c5d4bba2e" http://localhost:8080/messages
