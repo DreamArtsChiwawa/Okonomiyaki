@@ -57,11 +57,11 @@ def messages():
             # minvalue = (value['min']['score'])
             # print(maxvalue)
             # print(minvalue)
-            value_res = get_value(value['res'])
+            value_total = get_value(value['total'])
 
             send_message(companyId, groupId, "とってもポジティブな文章は、「" + value['max']['sent'] + "」で、" + str(
                 int(maxvalue)) + "点でした！\n" + "すっごくネガティブな文章は、「" + value['min']['sent'] + "」で、" + str(
-                int(minvalue)) + "点でした！\n" + "ウィークリーレポートの総計は、" + str(int(value_res)) + "点でした")
+                int(minvalue)) + "点でした！\n" + "ウィークリーレポートの総計は、" + str(int(value_total)) + "点でした")
 
         print("OK!")
         return "OK"
