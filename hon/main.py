@@ -39,10 +39,10 @@ def messages():
 
         userName = msgObj['createdUserName']
 
-        if messageText in '週報' or messageText in "ウィークリーレポート":
-            send_message(companyId, groupId, "判断したい週報を!")
-            if messageText in ["判断"]:
-                send_message(companyId, groupId, "判断したい週報を入力してください！")
+        # if messageText in '週報' or messageText in "ウィークリーレポート":
+        #     send_message(companyId, groupId, "判断したい週報を!")
+        #     if messageText in ["判断"]:
+        #         send_message(companyId, groupId, "判断したい週報を入力してください！")
 
         if 1 == 1:  # messageText in ["<< WEEKLY REPORT >>"]:
             # AIをここを実行して値を取得する
@@ -59,9 +59,11 @@ def messages():
             # print(minvalue)
             value_total = get_value(value['total'])
 
-            send_message(companyId, groupId, "とってもポジティブな文章は、「" + value['max']['sent'] + "」で、" + str(
-                int(maxvalue)) + "点でした！\n" + "すっごくネガティブな文章は、「" + value['min']['sent'] + "」で、" + str(
-                int(minvalue)) + "点でした！\n" + "ウィークリーレポートの総計は、" + str(int(value_total)) + "点でした")
+            # send_message(companyId, groupId, "とってもポジティブな文章は、「" + value['max']['sent'] + "」で、" + str(
+            #     int(maxvalue)) + "点でした！\n" + "すっごくネガティブな文章は、「" + value['min']['sent'] + "」で、" + str(
+            #     int(minvalue)) + "点でした！\n" + "ウィークリーレポートの総計は、" + str(int(value_total)) + "点でした")
+            result_text = "max = "+str(maxvalue)+", min = "+str(minvalue)+", total = "+str(value_total)
+            send_message(companyId, groupId, result_text)
 
         print("OK!")
         return "OK"
