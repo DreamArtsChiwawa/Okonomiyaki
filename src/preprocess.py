@@ -28,6 +28,7 @@ def preprocess(raw_text):
 
     for key, obj in content.items():
         print(key, obj)
+        print('---------------')
 
     return content
 
