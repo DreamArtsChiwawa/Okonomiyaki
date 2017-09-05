@@ -7,10 +7,12 @@ import sys
 sys.path.append('../johejo/')
 import head
 
+
 def print_result(annotations, text_list):
     score = annotations.sentiment.score
     magnitude = annotations.sentiment.magnitude
     score_list = []
+    print(score)
     
     for index, sentence in enumerate(annotations.sentences):
         sentence_sentiment = sentence.sentiment.score
@@ -35,7 +37,7 @@ def print_result(annotations, text_list):
     print('min score is {}'.format(min_score))
     print('center score is {}'.format(center_score))
     
-    dic = {'max':{'score':max_score}, 'min':{'score':min_score}, 'sum':sum_score, 'ave':ave_score}
+    dic = {'max': {'score':max_score}, 'min': {'score':min_score}, 'sum': sum_score, 'ave': ave_score}
 
     print(dic)
 
