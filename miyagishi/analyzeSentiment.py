@@ -1,6 +1,6 @@
 """Demonstrates how to make a simple call to the Natural Language API."""
 
-import argparse
+#import argparse
 import numpy as np
 from google.cloud import language
 import sys
