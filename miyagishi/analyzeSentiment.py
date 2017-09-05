@@ -71,7 +71,48 @@ def analyze(text):
                                          include_entities=False)
 
     # Print the results
-    print_result(annotations, text_list)
+    # print_result(annotations, text_list)
+    return set_dict(annotations)
+
+
+def set_dict(annotations):
+    score = annotations.sentiment.score
+    magnitude = annotations.sentiment.magnitude
+    score_list = []
+    print(score)
+
+    for index, sentence in enumerate(annotations.sentences):
+        sentence_sentiment = sentence.sentiment.score
+        print('Sentence {} has a sentiment score of {}'.format(
+            index, sentence_sentiment))
+        score_list.append(sentence_sentiment)
+
+    print('Overall Sentiment: score of {} with magnitude of {}'.format(
+        score, magnitude))
+
+    sum_score = sum(score_list)
+    ave_score = sum_score / len(score_list)
+    max_score = max(score_list)
+    min_score = min(score_list)
+    med_score = np.median(score_list)
+
+    print(score_list)
+
+    # print('total score is {}'.format(sum_score))
+    # print('average score is {}'.format(ave_score))
+    # print('max score is {}.The Sentence is ({})'.format(max_score, text_list[score_list.index(max_score)]))
+    # print('min score is {}'.format(min_score))
+    # print('center score is {}'.format(center_score))
+
+    dic = {'max': {'score': max_score},
+           'min': {'score': min_score},
+           'sum': sum_score,
+           'ave': ave_score,
+           'med': med_score}
+
+    print(dic)
+
+    return dic
 
 if __name__ == '__main__':
     
