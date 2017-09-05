@@ -9,9 +9,9 @@ TAGS = ['総括',
         '次週']
 
 def main():
-    with open('../staff_wr_sample/9.mes.utf', 'r') as f:
+    with open('../staff_wr_sample/test.txt', 'rb') as f:
         # raw_text = f.readlines()
-        raw_text = f.read()
+        raw_text = f.read().decode()
 
     preprocessed_text = preprocess(raw_text)
     # print(preprocessed_text)
@@ -38,10 +38,11 @@ def search_tag(tag, text_list):
     tag_content = []
     for text in text_list:
         if tag_flag:
-            for t in TAGS:
-                if text.find(t) >= 0:
-                    continue
-                tag_content.append(text)
+            # for t in TAGS:
+            #     if text.find(t) >= 0:
+            #         continue
+            #     else:
+            tag_content.append(text)
 
         if text.find(tag) >= 0:
             tag_flag = 1
