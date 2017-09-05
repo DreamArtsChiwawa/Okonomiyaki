@@ -3,22 +3,20 @@ def main():
         raw_text = f.readlines()
 
     preprocessed_text = preprocess(raw_text)
-    print(preprocessed_text)
 
 
 def preprocess(raw_text):
     preprocessed_text = ''
 
     if isinstance(raw_text, str):
+        print('IF')
         text_list = raw_text.splitlines()
 
     else:
+        print('ELSE')
         text_list = raw_text
-    #
-    # for line in text_list:
-    #
-    #
-    #     forward, backward = cut_text(raw_text, '総括')
+
+    print(text_list)
 
     return text_list
 
