@@ -7,7 +7,7 @@ import sys
 sys.path.append('../johejo/')
 import head
 
-def print_result(annotations):
+def print_result(annotations, text_list):
     score = annotations.sentiment.score
     magnitude = annotations.sentiment.magnitude
     score_list = []
@@ -16,7 +16,6 @@ def print_result(annotations):
         sentence_sentiment = sentence.sentiment.score
         print('Sentence {} has a sentiment score of {}'.format(
             index, sentence_sentiment))
-        #print(annotations.sentences)
         score_list.append(sentence_sentiment)
 
     print('Overall Sentiment: score of {} with magnitude of {}'.format(
@@ -36,10 +35,11 @@ def print_result(annotations):
     print('min score is {}'.format(min_score))
     print('center score is {}'.format(center_score))
     
-    #dic = ['max':max_score, 'min':min_score, 'sum':sum_score, 'ave':ave_score]
+    dic = {'max':max_score, 'min':min_score, 'sum':sum_score, 'ave':ave_score}
 
-    #return dic
-    return 0
+    print(dic)
+
+    return dic
 
     '''
     print('Sentiment: score of {} with magnitude of {}'.format(
@@ -55,7 +55,9 @@ def analyze():
 
     review_file = head.get_text('../johejo/1061.mes.utf')
     review_file = review_file.replace('¥n','\n')
+    text_list = review_file.split("\n")
     print(review_file)
+    #print(text_list)
     #with open(movie_review_filename, 'r') as review_file:
     # Instantiates a plain text document.
     document = language_client.document_from_html(review_file)
@@ -66,7 +68,7 @@ def analyze():
                                          include_entities=False)
 
     # Print the results
-    print_result(annotations)
+    print_result(annotations, text_list)
 
 if __name__ == '__main__':
     
