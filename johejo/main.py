@@ -1,12 +1,12 @@
 
 def main():
-    print("GROUP")
-    print(get_group("/Users/heijo/PycharmProjects/Okonomiyaki/johejo/1061.mes.utf"))
-
-    print()
-
-    print("TEXT")
-    print(get_text("/Users/heijo/PycharmProjects/Okonomiyaki/johejo/1061.mes.utf"))
+    # print("GROUP")
+    # print(get_group("/Users/heijo/PycharmProjects/Okonomiyaki/johejo/1061.mes.utf"))
+    #
+    # print()
+    #
+    # print("TEXT")
+    print(get_text("1061.mes.utf"))
 
 
 def get_group(path):
@@ -36,13 +36,16 @@ def get_text(path):
     sokatsu_tags = {"tag": "総括", "next_tag": "■課題・問題・トラブル⇒Request"}
     sokatsu_content = cut_text(text, sokatsu_tags)
 
-    kadai_tags = {"tag": "■課題・問題・トラブル⇒Request", "next_tag": "■Highlight"}
+    kadai_tags = {"tag": "課題・問題・トラブル⇒Request", "next_tag": "Highlight"}
     kadai_content = cut_text(text, kadai_tags)
 
-    jisyu_tags = {"tag": "■次週の指針、メッセージ", "next_tag": "¥n"}
+    jisyu_tags = {"tag": "次週の指針、メッセージ", "next_tag": "¥n"}
     jisyu_content = cut_text(text, jisyu_tags)
 
     all_text = sokatsu_content + kadai_content + jisyu_content
+    all_text.replace("-", "")
+    all_text.replace("=", "")
+    all_text.strip()
 
     return all_text
 
