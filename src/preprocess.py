@@ -20,7 +20,7 @@ def preprocess(raw_text):
     #
     #     forward, backward = cut_text(raw_text, '総括')
 
-    return raw_text
+    return text_list
 
 
 # def cut_text(text, tag):
