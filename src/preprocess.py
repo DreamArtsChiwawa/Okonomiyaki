@@ -14,7 +14,7 @@ def main():
         raw_text = f.read()
 
     preprocessed_text = preprocess(raw_text)
-    print(preprocessed_text)
+    # print(preprocessed_text)
 
 
 def preprocess(raw_text):
@@ -25,9 +25,9 @@ def preprocess(raw_text):
 
     for tag in TAGS:
         content[tag] = search_tag(tag, text_list)
-    #
-    # for i in range(len(TAGS)):
-    #     content
+
+    for i in range(len(TAGS)):
+        print(content[i])
 
     return content
 
@@ -36,7 +36,10 @@ def search_tag(tag, text_list):
     tag_flag = 0
     tag_content = []
     for text in text_list:
-        if tag_flag and text not in TAGS:
+        if tag_flag:
+            for t in TAGS:
+                if text.find(t) >= 0:
+                    continue
                 tag_content.append(text)
 
         if text.find(tag) >= 0:
