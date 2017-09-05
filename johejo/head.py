@@ -24,46 +24,46 @@ def get_group(path):
 
 
 def cut_text(text, tags):
-    # content = text[text.find(tags["tag"]) + len(tags["tag"]):]
-    # content = content[:content.find(tags["next_tag"])]
-    content = []
-    tag_flag = 0
-    for line in text:
-        index = line.find(tags["tag"])
-        if index >= 0:
-            tag_flag = 1
-            continue
-        if tag_flag == 1:
-            content.append(line.strip())
-            continue
-        index = line.find(tags["next_tag"])
-        if index >= 0 and tag_flag == 1:
-            tag_flag = 0
+    content = text[text.find(tags["tag"]) + len(tags["tag"]):]
+    content = content[:content.find(tags["next_tag"])]
+    # content = []
+    # tag_flag = 0
+    # for line in text:
+    #     index = line.find(tags["tag"])
+    #     if index >= 0:
+    #         tag_flag = 1
+    #         continue
+    #     if tag_flag == 1:
+    #         content.append(line.strip())
+    #         continue
+    #     index = line.find(tags["next_tag"])
+    #     if index >= 0 and tag_flag == 1:
+    #         tag_flag = 0
+    #
+    # result = ''
+    # for line in content:
+    #     result += line
+    #
+    # tmp = result.split("。")
+    #
+    # sentences = ''
+    # for line in tmp:
+    #     sentences += line + '\n'
 
-    result = ''
-    for line in content:
-        result += line
-
-    tmp = result.split("。")
-
-    sentences = ''
-    for line in tmp:
-        sentences += line + '¥n'
-
-    return sentences
+    return content
 
 
 def get_text(path):
     with open(path, 'r') as f:
-        text = f.readlines()
-
+        # text = f.readlines()
+        text = f.read()
     sokatsu_tags = {"tag": "総括", "next_tag": "■課題・問題・トラブル⇒Request"}
     sokatsu_content = cut_text(text, sokatsu_tags)
 
     kadai_tags = {"tag": "課題・問題・トラブル⇒Request", "next_tag": "Highlight"}
     kadai_content = cut_text(text, kadai_tags)
 
-    jisyu_tags = {"tag": "次週の指針、メッセージ", "next_tag": "¥n¥n"}
+    jisyu_tags = {"tag": "次週の指針、メッセージ", "next_tag": "EOF"}
     jisyu_content = cut_text(text, jisyu_tags)
 
     all_text = sokatsu_content + kadai_content + jisyu_content
