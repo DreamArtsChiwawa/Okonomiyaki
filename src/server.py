@@ -4,7 +4,7 @@ import json
 import requests
 from flask import Flask, request
 
-from src import analyze
+import analyze
 
 app = Flask(__name__)
 env = os.environ
