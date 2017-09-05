@@ -31,7 +31,7 @@ def print_result(annotations, text_list):
     
     print('total score is {}'.format(sum_score))
     print('average score is {}'.format(ave_score))
-    print('max score is {}'.format(max_score))
+    print('max score is {}.The Sentence is ({})'.format(max_score, text_list[score_list.index(max_score)]))
     print('min score is {}'.format(min_score))
     print('center score is {}'.format(center_score))
     
@@ -49,13 +49,13 @@ def print_result(annotations, text_list):
 
 
 #def analyze(movie_review_filename):
-def analyze():
+def analyze(text):
     """Run a sentiment analysis request on text within a passed filename."""
     language_client = language.Client()
 
-    review_file = head.get_text('../johejo/1061.mes.utf')
-    review_file = review_file.replace('¥n','\n')
-    text_list = review_file.split("\n")
+    review_file = head.get_text(text)
+    review_file = review_file.replace('¥n','\n')    # 改行文字の置き換え
+    text_list = review_file.split("\n")             # 改行文字で分かち書き
     print(review_file)
     #print(text_list)
     #with open(movie_review_filename, 'r') as review_file:
@@ -81,5 +81,5 @@ if __name__ == '__main__':
         help='The filename of the movie review you\'d like to analyze.')
     args = parser.parse_args()
     '''
-    analyze()
+    analyze("今日はとても最高の一日だ")
     #analyze(args.movie_review_filename)
