@@ -24,14 +24,38 @@ def get_group(path):
 
 
 def cut_text(text, tags):
-    content = text[text.find(tags["tag"]) + len(tags["tag"]):]
-    content = content[:content.find(tags["next_tag"])]
-    return content
+    # content = text[text.find(tags["tag"]) + len(tags["tag"]):]
+    # content = content[:content.find(tags["next_tag"])]
+    content = []
+    tag_flag = 0
+    for line in text:
+        index = line.find(tags["tag"])
+        if index >= 0:
+            tag_flag = 1
+            continue
+        if tag_flag == 1:
+            content.append(line.strip())
+            continue
+        index = line.find(tags["next_tag"])
+        if index >= 0 and tag_flag == 1:
+            tag_flag = 0
+
+    result = ''
+    for line in content:
+        result += line
+
+    tmp = result.split("。")
+
+    sentences = ''
+    for line in tmp:
+        sentences += line + '¥n'
+
+    return sentences
 
 
 def get_text(path):
     with open(path, 'r') as f:
-        text = f.read()
+        text = f.readlines()
 
     sokatsu_tags = {"tag": "総括", "next_tag": "■課題・問題・トラブル⇒Request"}
     sokatsu_content = cut_text(text, sokatsu_tags)
@@ -43,9 +67,6 @@ def get_text(path):
     jisyu_content = cut_text(text, jisyu_tags)
 
     all_text = sokatsu_content + kadai_content + jisyu_content
-    all_text.replace("-", "")
-    all_text.replace("=", "")
-    all_text.strip()
 
     return all_text
 
