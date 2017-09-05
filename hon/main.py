@@ -44,27 +44,28 @@ def messages():
         #     if messageText in ["判断"]:
         #         send_message(companyId, groupId, "判断したい週報を入力してください！")
 
-        if 1 == 1:  # messageText in ["<< WEEKLY REPORT >>"]:
+        print(messageText)
+        # if 1 == 1:  # messageText in ["<< WEEKLY REPORT >>"]:
             # AIをここを実行して値を取得する
-            weeklyreport = messageText
-            value = analyzeSentiment.analyze(weeklyreport)
-            return 0
+            # weeklyreport = messageText.decode('utf-8')
+            # value = analyzeSentiment.analyze(weeklyreport)
             # value = {'max': {'score': 0.21, 'sent': "今日はぽかぽか陽気でした．"}, 'min': {'score': -0.7, 'sent': "神がはねてて最悪でした．"},
             #          'res': -0.4}
 
-            maxvalue = get_value(value['max']['score'])
-            minvalue = get_value(value['min']['score'])
+            # maxvalue = get_value(value['max']['score'])
+            # minvalue = get_value(value['min']['score'])
             # maxvalue = (value['max']['score'])
             # minvalue = (value['min']['score'])
             # print(maxvalue)
             # print(minvalue)
-            value_total = get_value(value['total'])
+            # value_total = get_value(value['total'])
 
             # send_message(companyId, groupId, "とってもポジティブな文章は、「" + value['max']['sent'] + "」で、" + str(
             #     int(maxvalue)) + "点でした！\n" + "すっごくネガティブな文章は、「" + value['min']['sent'] + "」で、" + str(
             #     int(minvalue)) + "点でした！\n" + "ウィークリーレポートの総計は、" + str(int(value_total)) + "点でした")
-            result_text = "max = " + str(maxvalue) + ", min = " + str(minvalue) + ", total = " + str(value_total)
-            send_message(companyId, groupId, result_text)
+            # result_text = "max = "+str(maxvalue)+", min = "+str(minvalue)+", total = "+str(value_total)
+            # send_message(companyId, groupId, result_text)
+        send_message(companyId, groupId, messageText)
 
         print("OK!")
         return "OK"
@@ -74,10 +75,10 @@ def messages():
         return "Request is not valid."
 
 
-def get_value(score):
-    value = score + 1
-    value = value * 50
-    return (value)
+# def get_value(score):
+#     value = score + 1
+#     value = value * 50
+#     return (value)
 
 
 # Check if token is valid.
