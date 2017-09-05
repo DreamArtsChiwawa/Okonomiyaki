@@ -55,14 +55,15 @@ def analyze(text):
     """Run a sentiment analysis request on text within a passed filename."""
     language_client = language.Client()
 
-    review_file = head.get_text(text)
-    review_file = review_file.replace('¥n','\n')    # 改行文字の置き換え
-    text_list = review_file.split("\n")             # 改行文字で分かち書き
-    print(review_file)
+    # review_file = head.get_text(text)
+    # review_file = review_file.replace('¥n', '\n')    # 改行文字の置き換え
+    # text_list = review_file.split("\n")             # 改行文字で分かち書き
+    # print(review_file)
     #print(text_list)
     #with open(movie_review_filename, 'r') as review_file:
     # Instantiates a plain text document.
-    document = language_client.document_from_html(review_file)
+    # document = language_client.document_from_html(review_file)
+    document = language_client.document_from_html(text)
 
     # Detects sentiment in the document.
     annotations = document.annotate_text(include_sentiment=True,
