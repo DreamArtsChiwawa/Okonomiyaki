@@ -1,3 +1,12 @@
+
+# global variables
+TAGS = ['総括',
+        '課題・問題',
+        'Highlight',
+        'Other',
+        'AR',
+        '次週']
+
 def main():
     with open('../staff_wr_sample/9.mes.utf', 'r') as f:
         # raw_text = f.readlines()
@@ -8,14 +17,35 @@ def main():
 
 
 def preprocess(raw_text):
-    preprocessed_text = ''
 
+    text_list = text2list(raw_text)
+
+    content = {}
+
+    for tag in TAGS:
+        content[tag] = search_tag(tag, text_list)
+
+    return content
+
+
+def search_tag(tag, text_list):
+    tag_flag = 0
+    tag_content = []
+    for text in text_list:
+        if tag_flag:
+            tag_content.append(text)
+
+        if text.find(tag) >= 0:
+            tag_flag = 1
+            continue
+
+    return tag_content
+
+def text2list(raw_text):
     if isinstance(raw_text, str):
-        print('IF')
         text_list = raw_text.splitlines()
 
     else:
-        print('ELSE')
         text_list = raw_text
 
     for i in range(len(text_list)):
@@ -28,12 +58,6 @@ def preprocess(raw_text):
             break
 
     return text_list
-
-
-# def cut_text(text, tag):
-#
-#
-#     return foward, backward
 
 
 if __name__ == '__main__':
