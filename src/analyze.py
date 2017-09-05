@@ -42,6 +42,8 @@ def analyze(text):
     """Run a sentiment analysis request on text within a passed filename."""
     language_client = language.Client()
 
+    print(text)
+
     # review_file = head.get_text(text)
     # review_file = review_file.replace('¥n', '\n')    # 改行文字の置き換え
     # text_list = review_file.split("\n")             # 改行文字で分かち書き
