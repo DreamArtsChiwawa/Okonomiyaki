@@ -4,6 +4,7 @@ import requests
 from flask import Flask, request
 
 import analyze
+import preprocess
 
 app = Flask(__name__)
 env = os.environ
@@ -26,7 +27,9 @@ def messages():
         messageText = msgObj['text']
         userName = msgObj['createdUserName']
 
-        value = analyze.analyze(messageText)
+        preprocessed_text = preprocess.preprocess(messageText)
+
+        value = analyze.analyze(preprocessed_text)
 
         return_message = set_message(value)
 

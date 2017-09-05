@@ -8,13 +8,14 @@ TAGS = ['総括',
         'AR',
         '次週']
 
+
 def main():
-    with open('../staff_wr_sample/217.mes.utf', 'rb') as f:
+    with open('../staff_wr_sample/9.mes.utf', 'rb') as f:
         # raw_text = f.readlines()
         raw_text = f.read().decode()
 
     preprocessed_text = preprocess(raw_text)
-    # print(preprocessed_text)
+    print(preprocessed_text)
 
 
 def preprocess(raw_text):
@@ -26,27 +27,22 @@ def preprocess(raw_text):
     for tag in TAGS:
         content[tag] = search_tag(tag, text_list)
 
+    sentences = []
     for key, value in content.items():
-        print(key)
         sentence = ''
-        end_flag = 0
         for v in value:
-            print("v", v)
-            if v.find('。') < 0:
-                sentence += v
-            else:
-                end_flag = 1
+            sentence += v
 
-            if end_flag:
-                sentence += v
-                break
+        tmp = sentence.split('。')
+        tmp = remove_blank(tmp)
+        for item in tmp:
+            sentences.append(item)
 
-            # print("s", sentence)
+    result = ''
+    for s in sentences:
+        result += s + "\n"
 
-        print("s", sentence)
-        print('---------------')
-
-    return content
+    return result
 
 
 def search_tag(tag, text_list):
@@ -81,13 +77,19 @@ def text2list(raw_text):
     for i in range(len(text_list)):
         text_list[i] = text_list[i].strip()
 
+    text_list = remove_blank(text_list)
+
+    return text_list
+
+
+def remove_blank(list_obj):
     while True:
         try:
-            text_list.remove('')
+            list_obj.remove('')
         except:
             break
 
-    return text_list
+    return list_obj
 
 
 if __name__ == '__main__':
