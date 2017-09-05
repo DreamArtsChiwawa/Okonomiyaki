@@ -1,3 +1,4 @@
+from collections import OrderedDict
 
 # global variables
 TAGS = ['総括',
@@ -20,10 +21,13 @@ def preprocess(raw_text):
 
     text_list = text2list(raw_text)
 
-    content = {}
+    content = OrderedDict()
 
     for tag in TAGS:
         content[tag] = search_tag(tag, text_list)
+    #
+    # for i in range(len(TAGS)):
+    #     content
 
     return content
 
@@ -40,6 +44,7 @@ def search_tag(tag, text_list):
             continue
 
     return tag_content
+
 
 def text2list(raw_text):
     if isinstance(raw_text, str):
