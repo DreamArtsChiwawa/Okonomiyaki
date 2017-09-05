@@ -36,8 +36,8 @@ def search_tag(tag, text_list):
     tag_flag = 0
     tag_content = []
     for text in text_list:
-        if tag_flag:
-            tag_content.append(text)
+        if tag_flag and text not in TAGS:
+                tag_content.append(text)
 
         if text.find(tag) >= 0:
             tag_flag = 1
