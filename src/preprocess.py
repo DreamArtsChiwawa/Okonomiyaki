@@ -1,6 +1,7 @@
 def main():
     with open('../staff_wr_sample/9.mes.utf', 'r') as f:
-        raw_text = f.readlines()
+        # raw_text = f.readlines()
+        raw_text = f.read()
 
     preprocessed_text = preprocess(raw_text)
 
