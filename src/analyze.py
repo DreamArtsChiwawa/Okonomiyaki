@@ -84,7 +84,7 @@ def set_dict(annotations):
     ave_score = sum_score / len(score_list)
     max_score = max(score_list)
     min_score = min(score_list)
-    med_score = np.median(score_list)
+    mid_score = np.median(score_list)
     total_score = score
 
     print(score_list)
@@ -99,7 +99,7 @@ def set_dict(annotations):
            'min': {'score': min_score},
            'sum': sum_score,
            'ave': ave_score,
-           'med': med_score,
+           'mid': {'score': mid_score},
            'magnitude': magnitude,
            'total': total_score}
 
