@@ -67,16 +67,16 @@ def analyze(text):
     text = text.encode().decode('utf-8')
     print(text)
 
-    document = language_client.document_from_html(text)
+    # document = language_client.document_from_html(text)
     # document = language_client.document_from_html("The quick brown fox jumps over the lazy dog.")
     # Detects sentiment in the document.
-    annotations = document.annotate_text(include_sentiment=True,
-                                         include_syntax=False,
-                                         include_entities=False)
+    # annotations = document.annotate_text(include_sentiment=True,
+    #                                      include_syntax=False,
+    #                                      include_entities=False)
 
     # Print the results
     # print_result(annotations, text_list)
-    return set_dict(annotations)
+    # return set_dict(annotations)
 
 
 def set_dict(annotations):

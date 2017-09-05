@@ -48,6 +48,7 @@ def messages():
             # AIをここを実行して値を取得する
             weeklyreport = messageText
             value = analyzeSentiment.analyze(weeklyreport)
+            return 0
             # value = {'max': {'score': 0.21, 'sent': "今日はぽかぽか陽気でした．"}, 'min': {'score': -0.7, 'sent': "神がはねてて最悪でした．"},
             #          'res': -0.4}
 
@@ -62,7 +63,7 @@ def messages():
             # send_message(companyId, groupId, "とってもポジティブな文章は、「" + value['max']['sent'] + "」で、" + str(
             #     int(maxvalue)) + "点でした！\n" + "すっごくネガティブな文章は、「" + value['min']['sent'] + "」で、" + str(
             #     int(minvalue)) + "点でした！\n" + "ウィークリーレポートの総計は、" + str(int(value_total)) + "点でした")
-            result_text = "max = "+str(maxvalue)+", min = "+str(minvalue)+", total = "+str(value_total)
+            result_text = "max = " + str(maxvalue) + ", min = " + str(minvalue) + ", total = " + str(value_total)
             send_message(companyId, groupId, result_text)
 
         print("OK!")
