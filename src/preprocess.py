@@ -17,6 +17,9 @@ def preprocess(raw_text):
         print('ELSE')
         text_list = raw_text
 
+    for i in range(text_list):
+        text_list[i] = text_list[i].strip()
+
     return text_list
 
 
