@@ -21,9 +21,13 @@ def preprocess(raw_text):
     for i in range(len(text_list)):
         text_list[i] = text_list[i].strip()
 
-    new_list = filter(lambda s: s != '', text_list)
+    while True:
+        try:
+            text_list.remove('')
+        except:
+            break
 
-    return new_list
+    return text_list
 
 
 # def cut_text(text, tag):
