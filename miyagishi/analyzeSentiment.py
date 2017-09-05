@@ -63,9 +63,9 @@ def analyze(text):
     #with open(movie_review_filename, 'r') as review_file:
     # Instantiates a plain text document.
     # document = language_client.document_from_html(review_file)
-    # document = language_client.document_from_html(text)
     print(text)
-    exit(1)
+    print(type(text))
+    document = language_client.document_from_html(text)
     # document = language_client.document_from_html("The quick brown fox jumps over the lazy dog.")
     # Detects sentiment in the document.
     annotations = document.annotate_text(include_sentiment=True,
