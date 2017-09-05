@@ -64,7 +64,7 @@ def analyze(text):
     # Instantiates a plain text document.
     # document = language_client.document_from_html(review_file)
     print(type(text))
-    text = text.encode()
+    text = text.encode().decode('utf-8')
     print(text)
 
     document = language_client.document_from_html(text)
