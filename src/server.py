@@ -27,8 +27,6 @@ def messages():
         messageText = msgObj['text']
         userName = msgObj['createdUserName']
 
-        print(messageText)
-
         value = analyze.analyze(messageText)
 
         return_message = set_message(value)
