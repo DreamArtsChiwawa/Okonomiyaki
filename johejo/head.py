@@ -63,7 +63,7 @@ def get_text(path):
     kadai_tags = {"tag": "課題・問題・トラブル⇒Request", "next_tag": "Highlight"}
     kadai_content = cut_text(text, kadai_tags)
 
-    jisyu_tags = {"tag": "次週の指針、メッセージ", "next_tag": "EOF"}
+    jisyu_tags = {"tag": "次週の指針、メッセージ", "next_tag": "\n\nR"}
     jisyu_content = cut_text(text, jisyu_tags)
 
     all_text = sokatsu_content + kadai_content + jisyu_content
