@@ -53,17 +53,17 @@ def cut_text(text, tags):
     return content
 
 
-def get_text(path):
-    with open(path, 'r') as f:
-        # text = f.readlines()
-        text = f.read()
+def get_text(text):
+    # with open(path, 'r') as f:
+    #     text = f.readlines()
+    #     text = f.read()
     sokatsu_tags = {"tag": "総括", "next_tag": "■課題・問題・トラブル⇒Request"}
     sokatsu_content = cut_text(text, sokatsu_tags)
 
     kadai_tags = {"tag": "課題・問題・トラブル⇒Request", "next_tag": "Highlight"}
     kadai_content = cut_text(text, kadai_tags)
 
-    jisyu_tags = {"tag": "次週の指針、メッセージ", "next_tag": "\n\nR"}
+    jisyu_tags = {"tag": "次週の指針、メッセージ", "next_tag": "\n\n"}
     jisyu_content = cut_text(text, jisyu_tags)
 
     all_text = sokatsu_content + kadai_content + jisyu_content

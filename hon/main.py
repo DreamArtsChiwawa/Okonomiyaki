@@ -47,7 +47,7 @@ def messages():
         if 1 == 1:  # messageText in ["<< WEEKLY REPORT >>"]:
             # AIをここを実行して値を取得する
             weeklyreport = messageText
-            value = analyzeSentiment.analyze()
+            value = analyzeSentiment.analyze(weeklyreport)
             # value = {'max': {'score': 0.21, 'sent': "今日はぽかぽか陽気でした．"}, 'min': {'score': -0.7, 'sent': "神がはねてて最悪でした．"},
                      # 'res': -0.4}
 
