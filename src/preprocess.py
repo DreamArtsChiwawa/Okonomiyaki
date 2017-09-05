@@ -26,8 +26,8 @@ def preprocess(raw_text):
     for tag in TAGS:
         content[tag] = search_tag(tag, text_list)
 
-    for i in range(len(TAGS)):
-        print(content[i])
+    for key, obj in content.items():
+        print(key, obj)
 
     return content
 
