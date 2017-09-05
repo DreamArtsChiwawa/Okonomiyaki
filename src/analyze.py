@@ -2,7 +2,6 @@ import numpy as np
 from google.cloud import language
 
 
-
 def print_result(annotations, text_list):
     score = annotations.sentiment.score
     magnitude = annotations.sentiment.magnitude
@@ -51,27 +50,26 @@ def analyze(text):
     # with open(movie_review_filename, 'r') as review_file:
     # Instantiates a plain text document.
     # document = language_client.document_from_html(review_file)
-    print(type(text))
-    text = text.encode().decode('utf-8')
-    print(text)
+    # print(type(text))
+    # text = text.encode().decode('utf-8')
+    # print(text)
 
-    # document = language_client.document_from_html(text)
+    document = language_client.document_from_html(text)
     # document = language_client.document_from_html("The quick brown fox jumps over the lazy dog.")
-    # Detects sentiment in the document.
-    # annotations = document.annotate_text(include_sentiment=True,
-    #                                      include_syntax=False,
-    #                                      include_entities=False)
 
-    # Print the results
-    # print_result(annotations, text_list)
-    # return set_dict(annotations)
+    annotations = document.annotate_text(include_sentiment=True,
+                                         include_syntax=False,
+                                         include_entities=False)
+
+    value_dict = set_dict(annotations)
+
+    return value_dict
 
 
 def set_dict(annotations):
     score = annotations.sentiment.score
     magnitude = annotations.sentiment.magnitude
     score_list = []
-    print(score)
 
     for index, sentence in enumerate(annotations.sentences):
         sentence_sentiment = sentence.sentiment.score
@@ -102,9 +100,8 @@ def set_dict(annotations):
            'sum': sum_score,
            'ave': ave_score,
            'med': med_score,
+           'magnitude': magnitude,
            'total': total_score}
-
-    print(dic)
 
     return dic
 
@@ -119,5 +116,5 @@ if __name__ == '__main__':
         help='The filename of the movie review you\'d like to analyze.')
     args = parser.parse_args()
     '''
-    analyze("今日はとても最高の一日だ")
+    print(analyze("今日はとても最高の一日だ"))
     # analyze(args.movie_review_filename)
