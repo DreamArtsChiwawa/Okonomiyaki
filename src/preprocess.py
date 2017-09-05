@@ -4,7 +4,7 @@ def main():
         raw_text = f.read()
 
     preprocessed_text = preprocess(raw_text)
-
+    print(preprocessed_text)
 
 def preprocess(raw_text):
     preprocessed_text = ''
@@ -16,8 +16,6 @@ def preprocess(raw_text):
     else:
         print('ELSE')
         text_list = raw_text
-
-    print(text_list)
 
     return text_list
 
