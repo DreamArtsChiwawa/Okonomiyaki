@@ -64,7 +64,9 @@ def analyze(text):
     # Instantiates a plain text document.
     # document = language_client.document_from_html(review_file)
     print(type(text))
+    text = text.encode()
     print(text)
+
     document = language_client.document_from_html(text)
     # document = language_client.document_from_html("The quick brown fox jumps over the lazy dog.")
     # Detects sentiment in the document.
