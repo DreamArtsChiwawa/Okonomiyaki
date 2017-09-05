@@ -80,7 +80,7 @@ def set_message(analyzed_value):
               '\nMIN = ' + str(analyzed_value['min']['score']) + \
               '\nMID = ' + str(analyzed_value['mid']['score']) + \
               '\nMAGNITUDE = ' + str(analyzed_value['magnitude']) + \
-              '\nTOTAL = ' + str(analyzed_value['max'])
+              '\nTOTAL = ' + str(analyzed_value['total'])
 
     return message
 
