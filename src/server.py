@@ -4,6 +4,8 @@ import json
 import requests
 from flask import Flask, request
 
+from src import analyze
+
 app = Flask(__name__)
 env = os.environ
 
@@ -27,7 +29,11 @@ def messages():
 
         print(messageText)
 
-        send_message(companyId, groupId, messageText)
+        value = analyze.analyze(messageText)
+
+        return_message = set_message(value)
+
+        send_message(companyId, groupId, return_message)
 
         print("OK!")
 
@@ -66,6 +72,16 @@ def send_message(companyId, groupId, message):
     }
 
     requests.post(url, headers=headers, data=json.dumps(content))
+
+
+def set_message(analyzed_value):
+    message = 'RESULT' + \
+              '\nMAX = ' + str(analyzed_value['max']['score']) + \
+              '\nMIN = ' + str(analyzed_value['min']['score']) + \
+              '\nMID = ' + str(analyzed_value['mid']['score']) + \
+              '\nTOTAL = ' + str(analyzed_value['max'])
+
+    return message
 
 
 if __name__ == '__main__':
