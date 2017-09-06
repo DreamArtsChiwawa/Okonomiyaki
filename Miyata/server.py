@@ -16,6 +16,7 @@ def helloPage():
 
 
 @app.route('/messages', methods=['POST'])
+
 def messages():
     if is_request_valid(request):
 
@@ -27,15 +28,24 @@ def messages():
         messageText = msgObj['text']
         userName = msgObj['createdUserName']
 
-        preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
+        flag = 0
+        
+        if messageText.find('週報') and messageText.find('判断')　== 1:
+            send_message(companyId, "判断したい週報を入力してください！")
+            flag = 1
+            
+        if messageText.find('<< WEEKLY REPORT >>') == 1:
+            preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
 
-        value = analyze.analyze(preprocessed_text)
-        #value = dammy() #ダミーの辞書を生成 
-        return_message, return_message2, return_message3 = set_message(value) #メッセージを整形
+            
+        if flag = 0:
+            value = analyze.analyze(preprocessed_text)
+            #value = dammy() #ダミーの辞書を生成 
+            return_message, return_message2, return_message3 = set_message(value) #メッセージを整形
 
-        send_message(companyId, groupId, return_message) #メッセージを送信
-        send_message(companyId, groupId, return_message2)
-        send_message(companyId, groupId, return_message3)
+            send_message(companyId, groupId, return_message) #メッセージを送信
+            send_message(companyId, groupId, return_message2)
+            send_message(companyId, groupId, return_message3)
         
 
         print("MESSEAGES SENDED") #log
