@@ -92,9 +92,7 @@ def send_message(companyId, groupId, message):
 def send_file(companyId, groupId, file_path):
     url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
 
-    with open(file_path, 'rb') as f:
-        binary = f.read()
-
+    filename = "DSC_0014.JPG"
     headers = {
 
         'Content-Type': 'application/json',
@@ -103,14 +101,17 @@ def send_file(companyId, groupId, file_path):
 
     }
 
-    content = {
+    files = {
 
-        'file': binary,
-        'fileName': file_path
-
+        'file': (filename, open(file_path, 'rb'), 'image/jpeg')
     }
-
-    requests.post(url, headers=headers, data=json.dumps(content))
+    
+    contents = {
+        'fileName': filename
+    }
+    
+    
+    requests.post(url, headers=headers, files=files, data=json.dumps(contents))
 
 
 def set_message(analyzed_value):

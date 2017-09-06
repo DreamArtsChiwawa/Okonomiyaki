@@ -36,10 +36,6 @@ def messages():
             
         if messageText.find('<< WEEKLY REPORT >>') >= 0:
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
-
-        if messageText.find('<< WEEKLY REPORT >>') == 1:
-            preprocessed_text = preprocess.preprocess(messageText)  # テキストをAIに読みやすいようにする工程
-
         else:
             preprocessed_text = messageText
 
@@ -116,16 +112,26 @@ def send_file(companyId, groupId, file_path):
 
     requests.post(url, headers=headers, data=json.dumps(content))
 
+    
+def get_score(score):
+    score = score + 1 # 0-2
+    score = socre * 50 # 0-100
+    return score
 
 def set_message(analyzed_value):
+    
+    maxvalue = get_score(analyzed_value['max']['score'])
+    minvalue = get_score(analyzed_value['min']['score'])
+    totalvalue = get_score(analyzed_value['total'])
+    
     message = "とってもポジティブな文章は、\n「" + analyzed_value['max']['sentence'] + \
-                "」\nで、" + str(analyzed_value['max']['score']) + "点でした！\n"
+                "」\nで、" + str(maxvalue) + "点でした！\n"
                 
                 
     message2 = "すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
-                "」\nで、" + str(analyzed_value['min']['score']) + "点でした><\n"
+                "」\nで、" + str(minvalue) + "点でした><\n"
        
-    message3 =  "ウィークリーレポートの総計は、" + str(analyzed_value['total']) + "点でした\n" \
+    message3 =  "ウィークリーレポートの総計は、" + str(totalvalue) + "点でした\n" \
                 "来週もがんばりましょう！！"
         
     """
