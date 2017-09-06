@@ -16,7 +16,6 @@ def helloPage():
 
 
 @app.route('/messages', methods=['POST'])
-
 def messages():
     if is_request_valid(request):
 
@@ -29,26 +28,24 @@ def messages():
         userName = msgObj['createdUserName']
 
         flag = 0
-        
-        if messageText.find('週報') and messageText.find('判断')　== 1:
+
+        if messageText.find('週報') >= 0 and messageText.find('判断') >= 0:
             send_message(companyId, "判断したい週報を入力してください！")
             flag = 1
-            
-        if messageText.find('<< WEEKLY REPORT >>') == 1:
-            preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
 
-            
+        if messageText.find('<< WEEKLY REPORT >>') == 1:
+            preprocessed_text = preprocess.preprocess(messageText)  # テキストをAIに読みやすいようにする工程
+
         if flag == 0:
             value = analyze.analyze(preprocessed_text)
-            #value = dammy() #ダミーの辞書を生成 
-            return_message, return_message2, return_message3 = set_message(value) #メッセージを整形
+            # value = dammy() #ダミーの辞書を生成
+            return_message, return_message2, return_message3 = set_message(value)  # メッセージを整形
 
-            send_message(companyId, groupId, return_message) #メッセージを送信
+            send_message(companyId, groupId, return_message)  # メッセージを送信
             send_message(companyId, groupId, return_message2)
             send_message(companyId, groupId, return_message3)
-        
 
-        print("MESSEAGES SENDED") #log
+        print("MESSEAGES SENDED")  # log
 
         return "OK"
 
@@ -89,15 +86,14 @@ def send_message(companyId, groupId, message):
 
 def set_message(analyzed_value):
     message = "とってもポジティブな文章は、\n「" + analyzed_value['max']['sentence'] + \
-                "」\nで、" + str(analyzed_value['max']['score']) + "点でした！\n"
-                
-                
+              "」\nで、" + str(analyzed_value['max']['score']) + "点でした！\n"
+
     message2 = "すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
-                "」\nで、" + str(analyzed_value['min']['score']) + "点でした><\n"
-       
-    message3 =  "ウィークリーレポートの総計は、" + str(analyzed_value['total']) + "点でした\n" \
-                "来週もがんばりましょう！！"
-        
+               "」\nで、" + str(analyzed_value['min']['score']) + "点でした><\n"
+
+    message3 = "ウィークリーレポートの総計は、" + str(analyzed_value['total']) + "点でした\n" \
+                                                                  "来週もがんばりましょう！！"
+
     """
     message = 'RESULT' + \
               '\nMAX = ' + str(analyzed_value['max']['score']) + \
@@ -106,7 +102,9 @@ def set_message(analyzed_value):
               '\nMAGNITUDE = ' + str(analyzed_value['magnitude']) + \
               '\nTOTAL = ' + str(analyzed_value['total'])
     """
-    return message,message2,message3
+    return message, message2, message3
+
+
 """
 def dammy():
     dic = {'max': {'score': 0.8, 'sentense':"あｆｐふぁｗｋぱ"},
