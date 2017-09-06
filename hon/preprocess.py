@@ -11,11 +11,7 @@ TAGS = ['総括',
 IGNORE = ['◇',
           '◆',
           '●',
-<<<<<<< HEAD
-          '○'
-          ]
-
-=======
+          '○',
           '○',
           '==',
           '--',
@@ -28,7 +24,7 @@ IGNORE = ['◇',
           ]
 
 SENTENCE_TH = 5
->>>>>>> 4f921440f68c3864f47ef6cc5b1bfc8a130337e0
+
 
 def main():
     with open('../staff_wr_sample/1124.mes.utf', 'rb') as f:
