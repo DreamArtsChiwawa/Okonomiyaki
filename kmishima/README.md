@@ -19,3 +19,5 @@
 本当に信じられないと思う。<br>
 あり得ないと思う。<br>
 そして、その日ひどいテンション(その日に限らず)があまりにもひどすぎた。
+
+![a](https://drive.google.com/open?id=0B5Cib9FUOTj6cG5manJZREp6Tm8)
