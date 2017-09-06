@@ -29,11 +29,12 @@ def messages():
 
         preprocessed_text = preprocess.preprocess(messageText)
 
-        value = analyze.analyze(preprocessed_text)
+        #value = analyze.analyze(preprocessed_text)
+        value = dammy() #ダミーの辞書を生成        
+        
+        return_message = set_message(value) #メッセージを整形
 
-        return_message = set_message(value)
-
-        send_message(companyId, groupId, return_message)
+        send_message(companyId, groupId, return_message) #メッセージを送信
 
         print("OK!")
 
@@ -83,6 +84,17 @@ def set_message(analyzed_value):
               '\nTOTAL = ' + str(analyzed_value['total'])
 
     return message
+
+def dammy():
+    dic = {'max': {'score': 0.8, 'sentense':"あｆｐふぁｗｋぱ"},
+           'min': {'score': -0.4,'sentense':"うぃふぉあえふぉうぇ"},
+           'sum': 14,
+           'ave': -0.5,
+           'mid': {'score': 0},
+           'magnitude': 11,
+           'total': -4}
+    
+    return dic
 
 
 if __name__ == '__main__':
