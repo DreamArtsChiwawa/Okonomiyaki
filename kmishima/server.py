@@ -48,6 +48,7 @@ def messages():
             send_message(companyId, groupId, return_message2)
             send_message(companyId, groupId, return_message3)
 
+        send_file(companyId, groupId, 'DSC_0014.JPG')
         print("MESSEAGES SENDED")  # log
 
         return "OK"
