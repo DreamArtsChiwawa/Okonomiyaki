@@ -27,19 +27,19 @@ def messages():
         messageText = msgObj['text']
         userName = msgObj['createdUserName']
 
-        preprocessed_text = preprocess.preprocess(messageText)
+        #preprocessed_text = preprocess.preprocess(messageText)
 
-        value = analyze.analyze(preprocessed_text)
+        #value = analyze.analyze(preprocessed_text)
 
-        return_message = set_message(value)
+        #return_message = set_message(value)
 
-        send_message(companyId, groupId, return_message)
+        send_message(companyId, groupId, 'dummy')
 
         print("OK!")
 
         return "OK"
 
-    else:
+    else
 
         return "Request is not valid."
 
