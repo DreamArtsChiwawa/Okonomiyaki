@@ -88,7 +88,7 @@ def send_message(companyId, groupId, message):
     requests.post(url, headers=headers, data=json.dumps(content))
 
 
-# Send message to Chiwawa server
+# Send file to Chiwawa server
 def send_file(companyId, groupId, file_path):
     url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
 
@@ -111,7 +111,7 @@ def send_file(companyId, groupId, file_path):
     }
     
     
-    requests.post(url, headers=headers, files=files, data=json.dumps(contents))
+    requests.post(url, headers=headers, files=files, data=contents)
 
 
 def set_message(analyzed_value):

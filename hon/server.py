@@ -115,8 +115,8 @@ def send_file(companyId, groupId, file_path):
     
 def get_score(score):
     score = score + 1 # 0-2
-    score = socre * 50 # 0-100
-    return score
+    score = score * 50 # 0-100
+    return int(score)
 
 def set_message(analyzed_value):
     
