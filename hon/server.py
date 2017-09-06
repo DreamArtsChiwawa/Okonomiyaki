@@ -38,7 +38,7 @@ def messages():
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
 
             
-        if flag = 0:
+        if flag == 0:
             value = analyze.analyze(preprocessed_text)
             #value = dammy() #ダミーの辞書を生成 
             return_message, return_message2, return_message3 = set_message(value) #メッセージを整形
