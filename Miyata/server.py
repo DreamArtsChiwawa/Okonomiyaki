@@ -32,9 +32,12 @@ def messages():
         value = analyze.analyze(preprocessed_text)
         #value = dammy() #ダミーの辞書を生成        
         
-        return_message = set_message(value) #メッセージを整形
+        return_message, return_message2, return_message3 = set_message(value) #メッセージを整形
 
         send_message(companyId, groupId, return_message) #メッセージを送信
+        send_message(companyId, groupId, return_message2)
+        send_message(companyId, groupId, return_message3)
+        
 
         print("OK!")
 
@@ -76,14 +79,25 @@ def send_message(companyId, groupId, message):
 
 
 def set_message(analyzed_value):
+    message = "とってもポジティブな文章は、\n「" + analyzed_value['max']['sentence'] + \
+                "」\nで、" + str(analyzed_value['max']['score']) + "点でした！\n"
+                
+                
+    message2 = "すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
+                "」\nで、" + str(analyzed_value['min']['score']) + "点でした><\n"
+       
+    message3 =  "ウィークリーレポートの総計は、" + str(analyzed_value['total']) + "点でした\n" \
+                "来週もがんばりましょう！！"
+        
+    """
     message = 'RESULT' + \
               '\nMAX = ' + str(analyzed_value['max']['score']) + \
               '\nMIN = ' + str(analyzed_value['min']['score']) + \
               '\nMID = ' + str(analyzed_value['mid']['score']) + \
               '\nMAGNITUDE = ' + str(analyzed_value['magnitude']) + \
               '\nTOTAL = ' + str(analyzed_value['total'])
-
-    return message
+    """
+    return message,message2,message3
 """
 def dammy():
     dic = {'max': {'score': 0.8, 'sentense':"あｆｐふぁｗｋぱ"},
