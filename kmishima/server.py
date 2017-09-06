@@ -27,19 +27,33 @@ def messages():
         messageText = msgObj['text']
         userName = msgObj['createdUserName']
 
-        #preprocessed_text = preprocess.preprocess(messageText)
+        flag = 0
 
-        #value = analyze.analyze(preprocessed_text)
+        if messageText.find('週報') >= 0 and messageText.find('判断') >= 0:
+            send_message(companyId, "判断したい週報を入力してください！")
+            flag = 1
 
-        #return_message = set_message(value)
+        if messageText.find('<< WEEKLY REPORT >>') == 1:
+            preprocessed_text = preprocess.preprocess(messageText)  # テキストをAIに読みやすいようにする工程
 
-        send_message(companyId, groupId, 'dummy')
+        else:
+            preprocessed_text = messageText
 
-        print("OK!")
+        if flag == 0:
+            value = analyze.analyze(preprocessed_text)
+            # value = dammy() #ダミーの辞書を生成
+            return_message, return_message2, return_message3 = set_message(value)  # メッセージを整形
+
+            send_message(companyId, groupId, return_message)  # メッセージを送信
+            send_message(companyId, groupId, return_message2)
+            send_message(companyId, groupId, return_message3)
+
+        send_file(companyId, groupId, 'DSC_0014.JPG')
+        print("MESSEAGES SENDED")  # log
 
         return "OK"
 
-    else
+    else:
 
         return "Request is not valid."
 
@@ -55,11 +69,11 @@ def is_request_valid(request):
 
 # Send message to Chiwawa server
 def send_message(companyId, groupId, message):
-    url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
+    url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/messages'.format(companyId, groupId)
 
     headers = {
 
-        #'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
 
         'X-Chiwawa-API-Token': env['CHIWAWA_API_TOKEN']
 
@@ -67,8 +81,32 @@ def send_message(companyId, groupId, message):
 
     content = {
 
-        'file': 'https://drive.google.com/uc?export=view&id=0B5Cib9FUOTj6cG5manJZREp6Tm8'
-        'filename':'sutanpu'
+        'text': message
+
+    }
+
+    requests.post(url, headers=headers, data=json.dumps(content))
+
+
+# Send message to Chiwawa server
+def send_file(companyId, groupId, file_path):
+    url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
+
+    with open(file_path, 'rb') as f:
+        binary = f.read()
+
+    headers = {
+
+        'Content-Type': 'application/json',
+
+        'X-Chiwawa-API-Token': env['CHIWAWA_API_TOKEN']
+
+    }
+
+    content = {
+
+        'file': binary,
+        'fileName': file_path
 
     }
 
@@ -76,15 +114,38 @@ def send_message(companyId, groupId, message):
 
 
 def set_message(analyzed_value):
+    message = "とってもポジティブな文章は、\n「" + analyzed_value['max']['sentence'] + \
+              "」\nで、" + str(analyzed_value['max']['score']) + "点でした！\n"
+
+    message2 = "すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
+               "」\nで、" + str(analyzed_value['min']['score']) + "点でした><\n"
+
+    message3 = "ウィークリーレポートの総計は、" + str(analyzed_value['total']) + "点でした\n" \
+                                                                  "来週もがんばりましょう！！"
+
+    """
     message = 'RESULT' + \
               '\nMAX = ' + str(analyzed_value['max']['score']) + \
               '\nMIN = ' + str(analyzed_value['min']['score']) + \
               '\nMID = ' + str(analyzed_value['mid']['score']) + \
               '\nMAGNITUDE = ' + str(analyzed_value['magnitude']) + \
               '\nTOTAL = ' + str(analyzed_value['total'])
+    """
+    return message, message2, message3
 
-    return message
 
+"""
+def dammy():
+    dic = {'max': {'score': 0.8, 'sentense':"あｆｐふぁｗｋぱ"},
+           'min': {'score': -0.4,'sentense':"うぃふぉあえふぉうぇ"},
+           'sum': 14,
+           'ave': -0.5,
+           'mid': {'score': 0},
+           'magnitude': 11,
+           'total': -4}
+    
+    return dic
+"""
 
 if __name__ == '__main__':
     app.run(host='', port=80, debug=True)

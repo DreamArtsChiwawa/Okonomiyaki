@@ -1,5 +1,7 @@
 import numpy as np
+import matplotlib.pyplot as plt
 from google.cloud import language
+from datetime import datetime
 
 
 def analyze(text):
@@ -9,8 +11,8 @@ def analyze(text):
     print(text)
 
     # review_file = head.get_text(text)
-    # review_file = review_file.replace('¥n', '\n')    # 改行文字の置き換え
-    # text_list = review_file.split("\n")             # 改行文字で分かち書き
+    review_file = text.replace('¥n', '\n')    # 改行文字の置き換え
+    text_list = review_file.split("\n")             # 改行文字で分かち書き
     # print(review_file)
     # print(text_list)
     # with open(movie_review_filename, 'r') as review_file:
@@ -26,20 +28,20 @@ def analyze(text):
                                          include_syntax=False,
                                          include_entities=False)
 
-    value_dict = set_dict(annotations)
+    value_dict = set_dict(annotations, text_list)
 
     return value_dict
 
 
-def set_dict(annotations):
+def set_dict(annotations, text_list):
     score = annotations.sentiment.score
     magnitude = annotations.sentiment.magnitude
     score_list = []
 
     for index, sentence in enumerate(annotations.sentences):
         sentence_sentiment = sentence.sentiment.score
-        print('Sentence {} has a sentiment score of {}'.format(
-            index, sentence_sentiment))
+        print('Sentence {} has a sentiment score of {}.The sentence is "{}"\n'.format(
+            index, sentence_sentiment, text_list[index]))
         score_list.append(sentence_sentiment)
 
     print('Overall Sentiment: score of {} with magnitude of {}'.format(
@@ -54,14 +56,17 @@ def set_dict(annotations):
 
     print(score_list)
 
+    n, bins, patch = plt.hist(score_list, bins=np.arange(-1.0, 1.01, 0.1))  # 度数分布表の取得   
+    plt.savefig("fig_" + datetime.now().strftime("%Y%m%d-%H%M%S") + ".png") # ヒストグラムをファイルに出力
+    
     # print('total score is {}'.format(sum_score))
     # print('average score is {}'.format(ave_score))
     # print('max score is {}.The Sentence is ({})'.format(max_score, text_list[score_list.index(max_score)]))
     # print('min score is {}'.format(min_score))
     # print('center score is {}'.format(center_score))
 
-    dic = {'max': {'score': max_score},
-           'min': {'score': min_score},
+    dic = {'max': {'score': max_score, 'sentence': text_list[score_list.index(max_score)]},
+           'min': {'score': min_score, 'sentence': text_list[score_list.index(min_score)]},
            'sum': sum_score,
            'ave': ave_score,
            'mid': {'score': mid_score},
@@ -81,5 +86,5 @@ if __name__ == '__main__':
         help='The filename of the movie review you\'d like to analyze.')
     args = parser.parse_args()
     '''
-    print(analyze("The quick brown fox jumps over the lazy dog."))
+    print(analyze("今日はいい天気です。\n明日は天気が悪そうです。\n明後日はどうなる。"))
     # analyze(args.movie_review_filename)
