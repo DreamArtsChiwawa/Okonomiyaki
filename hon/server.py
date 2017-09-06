@@ -3,6 +3,7 @@ import json
 import requests
 from flask import Flask, request
 
+
 import analyze
 import preprocess
 
@@ -37,7 +38,12 @@ def messages():
         if messageText.find('<< WEEKLY REPORT >>') >= 0:
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
 
-            
+        if messageText.find('<< WEEKLY REPORT >>') == 1:
+            preprocessed_text = preprocess.preprocess(messageText)  # テキストをAIに読みやすいようにする工程
+
+        else:
+            preprocessed_text = messageText
+
         if flag == 0:
             value = analyze.analyze(preprocessed_text)
             #value = dammy() #ダミーの辞書を生成 
@@ -81,6 +87,31 @@ def send_message(companyId, groupId, message):
     content = {
 
         'text': message
+
+    }
+
+    requests.post(url, headers=headers, data=json.dumps(content))
+
+
+# Send message to Chiwawa server
+def send_file(companyId, groupId, file_path):
+    url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
+
+    with open(file_path, 'rb') as f:
+        binary = f.read()
+
+    headers = {
+
+        'Content-Type': 'application/json',
+
+        'X-Chiwawa-API-Token': env['CHIWAWA_API_TOKEN']
+
+    }
+
+    content = {
+
+        'file': binary,
+        'fileName': file_path
 
     }
 
