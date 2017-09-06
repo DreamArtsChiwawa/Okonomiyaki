@@ -27,7 +27,7 @@ SENTENCE_TH = 5
 
 
 def main():
-    with open('../staff_wr_sample/1124.mes.utf', 'rb') as f:
+    with open('../staff_wr_sample/1061.mes.utf', 'rb') as f:
         # raw_text = f.readlines()
         raw_text = f.read().decode()
 
