@@ -1,6 +1,7 @@
 import numpy as np
 from google.cloud import language
 
+
 def analyze(text):
     """Run a sentiment analysis request on text within a passed filename."""
     language_client = language.Client()

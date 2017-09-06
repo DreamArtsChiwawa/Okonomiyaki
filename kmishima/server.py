@@ -1,4 +1,4 @@
-import os
+iimport os
 import json
 import requests
 from flask import Flask, request
@@ -27,19 +27,19 @@ def messages():
         messageText = msgObj['text']
         userName = msgObj['createdUserName']
 
-        preprocessed_text = preprocess.preprocess(messageText)
+        #preprocessed_text = preprocess.preprocess(messageText)
 
-        value = analyze.analyze(preprocessed_text)
+        #value = analyze.analyze(preprocessed_text)
 
-        return_message = set_message(value)
+        #return_message = set_message(value)
 
-        send_message(companyId, groupId, return_message)
+        send_message(companyId, groupId, 'dummy')
 
         print("OK!")
 
         return "OK"
 
-    else:
+    else
 
         return "Request is not valid."
 
@@ -55,11 +55,11 @@ def is_request_valid(request):
 
 # Send message to Chiwawa server
 def send_message(companyId, groupId, message):
-    url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/messages'.format(companyId, groupId)
+    url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
 
     headers = {
 
-        'Content-Type': 'application/json',
+        #'Content-Type': 'application/json',
 
         'X-Chiwawa-API-Token': env['CHIWAWA_API_TOKEN']
 
@@ -67,7 +67,8 @@ def send_message(companyId, groupId, message):
 
     content = {
 
-        'text': message
+        'file': 'https://drive.google.com/uc?export=view&id=0B5Cib9FUOTj6cG5manJZREp6Tm8'
+        'filename':'sutanpu'
 
     }
 
