@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from google.cloud import language
 from datetime import datetime
 
+
 def analyze(text):
     """Run a sentiment analysis request on text within a passed filename."""
     language_client = language.Client()
