@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-from flask import Flask, request
+from flask import Flask
 
 import analyze
 import preprocess
