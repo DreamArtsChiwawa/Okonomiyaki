@@ -8,6 +8,12 @@ TAGS = ['総括',
         'AR',
         '次週']
 
+IGNORE = ['◇',
+          '◆',
+          '●',
+          '○'
+          ]
+
 
 def main():
     with open('../staff_wr_sample/9.mes.utf', 'rb') as f:
@@ -19,7 +25,6 @@ def main():
 
 
 def preprocess(raw_text):
-
     text_list = text2list(raw_text)
 
     content = OrderedDict()
