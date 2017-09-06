@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 from google.cloud import language
 from datetime import datetime
 
@@ -74,17 +75,3 @@ def set_dict(annotations, text_list):
            'total': total_score}
 
     return dic
-
-
-if __name__ == '__main__':
-    '''
-    parser = argparse.ArgumentParser(
-        description=__doc__,
-        formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument(
-        'movie_review_filename',
-        help='The filename of the movie review you\'d like to analyze.')
-    args = parser.parse_args()
-    '''
-    print(analyze("今日はいい天気です。\n明日は天気が悪そうです。\n明後日はどうなる。"))
-    # analyze(args.movie_review_filename)
