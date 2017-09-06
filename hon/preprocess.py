@@ -11,12 +11,27 @@ TAGS = ['総括',
 IGNORE = ['◇',
           '◆',
           '●',
+<<<<<<< HEAD
           '○'
           ]
 
+=======
+          '○',
+          '==',
+          '--',
+          'ーー',
+          '＝＝',
+          ':',
+          '：',
+          '*',
+          '＊',
+          ]
+
+SENTENCE_TH = 5
+>>>>>>> 4f921440f68c3864f47ef6cc5b1bfc8a130337e0
 
 def main():
-    with open('../staff_wr_sample/9.mes.utf', 'rb') as f:
+    with open('../staff_wr_sample/1124.mes.utf', 'rb') as f:
         # raw_text = f.readlines()
         raw_text = f.read().decode()
 
@@ -45,9 +60,29 @@ def preprocess(raw_text):
 
     result = ''
     for s in sentences:
-        result += s + "\n"
+        if is_ignore(s) or is_short(s):
+            continue
+
+        else:
+            result += s + "\n"
 
     return result
+
+
+def is_ignore(sentence):
+    for ignr in IGNORE:
+        if sentence.find(ignr) >= 0:
+            return True
+
+    return False
+
+
+def is_short(sentence):
+    if len(sentence) > SENTENCE_TH:
+        return False
+
+    else:
+        return True
 
 
 def search_tag(tag, text_list):
