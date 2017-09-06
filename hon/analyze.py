@@ -58,8 +58,9 @@ def set_dict(annotations, text_list):
     print(score_list)
 
     n, bins, patch = plt.hist(score_list, bins=np.arange(-1.0, 1.01, 0.1))  # 度数分布表の取得   
-    plt.savefig("fig_" + datetime.now().strftime("%Y%m%d-%H%M%S") + ".png") # ヒストグラムをファイルに出力
-    
+    #plt.savefig("fig_" + datetime.now().strftime("%Y%m%d-%H%M%S") + ".png") # ヒストグラムをファイルに出力
+    plt.savefig("fig_histgram.eps")
+
     # print('total score is {}'.format(sum_score))
     # print('average score is {}'.format(ave_score))
     # print('max score is {}.The Sentence is ({})'.format(max_score, text_list[score_list.index(max_score)]))
