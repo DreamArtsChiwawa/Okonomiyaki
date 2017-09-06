@@ -59,7 +59,7 @@ def send_message(companyId, groupId, message):
 
     headers = {
 
-        #'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
 
         'X-Chiwawa-API-Token': env['CHIWAWA_API_TOKEN']
 
