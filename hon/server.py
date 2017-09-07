@@ -36,17 +36,18 @@ def messages():
 
         if messageText.find('<< WEEKLY REPORT >>') >= 0:
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
+            state = "WR"
         else:
             preprocessed_text = messageText
 
-        if state == "none":
+        if state == "default":
             value = analyze.analyze(preprocessed_text)
             #value = dammy() #ダミーの辞書を生成
-            return_message, return_message2, return_message3 = set_message(value) #メッセージを整形
+            return_message = set_message_WR(value) #メッセージを整形
 
-            send_message(companyId, groupId, return_message) #メッセージを送信
-            send_message(companyId, groupId, return_message2)
-            send_message(companyId, groupId, return_message3)
+            send_message(companyId, groupId, return_message[0]) #メッセージを送信
+            send_message(companyId, groupId, return_message[1])
+            send_message(companyId, groupId, return_message[2])
 
         send_message(companyId, groupId, "みしまくんは写真を送ることに成功しましたか？")
         send_file(companyId, groupId, "ori.png")
@@ -122,21 +123,22 @@ def get_score(score):
     score = score * 50 # 0-100
     return int(score)
 
-def set_message(analyzed_value):
+def set_message_WR(analyzed_value):
 
     maxvalue = get_score(analyzed_value['max']['score'])
     minvalue = get_score(analyzed_value['min']['score'])
     totalvalue = get_score(analyzed_value['total'])
 
-    message = "とってもポジティブな文章は、\n「" + analyzed_value['max']['sentence'] + \
-                "」\nで、" + str(maxvalue) + "点でした！\n"
+    message = []
+    message.append("とってもポジティブな文章は、\n「" + analyzed_value['max']['sentence'] + \
+                "」\nで、" + str(maxvalue) + "点でした！\n")
 
 
-    message2 = "すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
-                "」\nで、" + str(minvalue) + "点でした><\n"
+    message.append("すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
+                "」\nで、" + str(minvalue) + "点でした><\n")
 
-    message3 =  "ウィークリーレポートの総計は、" + str(totalvalue) + "点でした\n" \
-                "来週もがんばりましょう！！"
+    message.append("ウィークリーレポートの総計は、" + str(totalvalue) + "点でした\n" \
+                "来週もがんばりましょう！！")
 
     """
     message = 'RESULT' + \
@@ -146,7 +148,7 @@ def set_message(analyzed_value):
               '\nMAGNITUDE = ' + str(analyzed_value['magnitude']) + \
               '\nTOTAL = ' + str(analyzed_value['total'])
     """
-    return message,message2,message3
+    return message
 """
 def dammy():
     dic = {'max': {'score': 0.8, 'sentense':"あｆｐふぁｗｋぱ"},
