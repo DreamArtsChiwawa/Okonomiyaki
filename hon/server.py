@@ -249,7 +249,7 @@ def set_message_MAXranking(analyzed_value):
         message.append("「" + maxsentense + "」は、" + maxscorelist[num] + "点でした。")
 
 
-    return analyze.list2text(message)
+    return preprocess.list2text(message)
 
 """
 message = 'RESULT' + \
