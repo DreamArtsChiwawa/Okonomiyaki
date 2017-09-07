@@ -88,16 +88,21 @@ def send_message(companyId, groupId, message):
     requests.post(url, headers=headers, data=json.dumps(content))
 
 
-# Send message to Chiwawa server
+# Send file to Chiwawa server
 def send_file(companyId, groupId, file_path):
     url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
 
-    with open(file_path, 'rb') as f:
+    headers = {
+
+        'X-Chiwawa-API-Token': env['CHIWAWA_API_TOKEN']
+
+    }
+
+
+    image = open(file_path, 'rb') as f:
         binary = f.read()
 
     headers = {
-
-        'Content-Type': 'application/json',
 
         'X-Chiwawa-API-Token': env['CHIWAWA_API_TOKEN']
 
@@ -105,12 +110,17 @@ def send_file(companyId, groupId, file_path):
 
     content = {
 
-        'file': binary,
-        'fileName': file_path
+        'file': ('ori.png',image,'image/png')
 
     }
 
-    requests.post(url, headers=headers, data=json.dumps(content))
+    data = {
+    	
+	'filename':'ori.png'
+
+    }
+
+    res = requests.post(url, headers=headers, files=files, data=data)
 
     
 def get_score(score):
