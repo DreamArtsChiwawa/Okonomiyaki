@@ -5,6 +5,7 @@ import pickle
 from google.cloud import language
 import pickle
 from datetime import datetime
+import preprocess
 
 SCORE_THRESHOLD = 0.8
 
@@ -13,28 +14,28 @@ def analyze(text):
 
     language_client = language.Client()
 
-    text_list = text.split("\n")  # 改行文字で分かち書き
-
     document = language_client.document_from_html(text)
 
     annotations = document.annotate_text(include_sentiment=True,
                                          include_syntax=False,
                                          include_entities=False)
 
-    value_dict = set_dict(annotations, text_list)
+    value_dict = set_dict(annotations)
 
     return value_dict
 
 
-def set_dict(annotations, text_list):
+def set_dict(annotations):
 
     score = annotations.sentiment.score
     magnitude = annotations.sentiment.magnitude
     score_list = []
+    sentence_list = []
 
     for index, sentence in enumerate(annotations.sentences):
-        sentence_sentiment = sentence.sentiment.score
-        score_list.append(sentence_sentiment)
+        score_list.append(sentence.sentiment.score)
+        sentence_list.append(sentence.content)
+   
 
     # print(text_list)
     sum_score = sum(score_list)
@@ -45,20 +46,21 @@ def set_dict(annotations, text_list):
     else:
         ave_score = 0
 
+    # print(score_list)
     max_score = max(score_list)
     min_score = min(score_list)
     mid_score = np.median(score_list)
     total_score = score
-
-    dic = {'max': {'score': max_score, 'sentence': text_list[score_list.index(max_score)]},
-           'min': {'score': min_score, 'sentence': text_list[score_list.index(min_score)]},
-           'sum': sum_score,
-           'ave': ave_score,
-           'mid': {'score': mid_score},
-           'magnitude': magnitude,
-           'total': total_score,
-           'score_list': score_list
-           }
+    
+    dic = {'max': {'score': max_score, 'sentence': sentence_list[score_list.index(max_score)]},
+               'min': {'score': min_score, 'sentence': sentence_list[score_list.index(min_score)]},
+               'sum': sum_score,
+               'ave': ave_score,
+               'mid': {'score': mid_score},
+               'magnitude': magnitude,
+               'total': total_score,
+               'score_list': score_list
+               }
 
     return dic
 
