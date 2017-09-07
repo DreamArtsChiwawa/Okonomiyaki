@@ -16,7 +16,6 @@ def helloPage():
 
 
 @app.route('/messages', methods=['POST'])
-
 def messages():
     if is_request_valid(request):
 
@@ -31,38 +30,35 @@ def messages():
         state = "default"
 
         if messageText.find('週報') >= 0 and messageText.find('判断') >= 0:
-            send_message(companyId, groupId,"判断したい週報を入力してください！")
+            send_message(companyId, groupId, "判断したい週報を入力してください！")
             state = "no need analyze"
 
-
-
-
-        if messageText.find('<< WEEKLY REPORT >>') >= 0: # WEEKLY REPORT
-            #preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
+        if messageText.find('<< WEEKLY REPORT >>') >= 0:  # WEEKLY REPORT
+            # preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "WR"
-        elif messageText.find('\n') >= 1: # WEEKLY REPORTでない長文
+        elif messageText.find('\n') >= 1:  # WEEKLY REPORTでない長文
 
             state = "long message"
-        else: # 短文
-            #preprocessed_text = messageText
+        else:  # 短文
+            # preprocessed_text = messageText
             state = "short message"
         preprocessed_text = preprocess.preprocess(messageText)
 
         if state != "no need analyze":
             value = analyze.analyze(preprocessed_text)
 
-        if state == "WR": # WEEKLY REPORTだった場合のメッセージリターン
-            #value = dammy() #ダミーの辞書を生成
-            return_message = set_message_WR(value) #メッセージを整形
+        if state == "WR":  # WEEKLY REPORTだった場合のメッセージリターン
+            # value = dammy() #ダミーの辞書を生成
+            return_message = set_message_WR(value)  # メッセージを整形
 
-            send_message(companyId, groupId, return_message[0]) #メッセージを送信
+            send_message(companyId, groupId, return_message[0])  # メッセージを送信
             send_message(companyId, groupId, return_message[1])
             send_message(companyId, groupId, return_message[2])
 
-        elif state == "longmessage": # WEEKLY REPORTじゃない長文
+        elif state == "longmessage":  # WEEKLY REPORTじゃない長文
             return_message = set_message_WR(value)
 
-            send_message(companyId, groupId, return_message[0]) #メッセージを送信
+            send_message(companyId, groupId, return_message[0])  # メッセージを送信
             send_message(companyId, groupId, return_message[1])
             send_message(companyId, groupId, return_message[2])
 
@@ -70,19 +66,17 @@ def messages():
         elif state == "short message":
             i = 1
 
-        #else:
+        # else:
         return_message = set_message_WR(value)
 
-        send_message(companyId, groupId, return_message[0]) #メッセージを送信
+        send_message(companyId, groupId, return_message[0])  # メッセージを送信
         send_message(companyId, groupId, return_message[1])
         send_message(companyId, groupId, return_message[2])
 
-
-
-        #send_message(companyId, groupId, "みしまくんは写真を送ることに成功しましたか？")
-        #send_file(companyId, groupId, "ori.png")
+        # send_message(companyId, groupId, "みしまくんは写真を送ることに成功しましたか？")
+        # send_file(companyId, groupId, "ori.png")
         print(set_message_WR(value))
-        print("MESSEAGES SENDED") #log
+        print("MESSEAGES SENDED")  # log
 
         return "OK"
 
@@ -123,7 +117,6 @@ def send_message(companyId, groupId, message):
 
 # Send file to Chiwawa server
 def send_file(companyId, groupId, file_path):
-
     url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
 
     headers = {
@@ -134,17 +127,17 @@ def send_file(companyId, groupId, file_path):
 
     file_name = os.path.basename(file_path)
 
-    image = open(file_path,"rb")
+    image = open(file_path, "rb")
 
     files = {
 
-        'file':(file_name,image,'image/png')
+        'file': (file_name, image, 'image/png')
 
     }
 
     data = {
 
-	'fileName':file_name
+        'fileName': file_name
 
     }
 
@@ -152,26 +145,25 @@ def send_file(companyId, groupId, file_path):
 
 
 def get_score(score):
-    score = score + 1 # 0-2
-    score = score * 50 # 0-100
+    score = score + 1  # 0-2
+    score = score * 50  # 0-100
     return int(score)
 
-def set_message_WR(analyzed_value):
 
+def set_message_WR(analyzed_value):
     maxvalue = get_score(analyzed_value['max']['score'])
     minvalue = get_score(analyzed_value['min']['score'])
     totalvalue = get_score(analyzed_value['total'])
 
     message = []
     message.append("とってもポジティブな文章は、\n「" + analyzed_value['max']['sentence'] + \
-                "」\nで、" + str(maxvalue) + "点でした！\n")
-
+                   "」\nで、" + str(maxvalue) + "点でした！\n")
 
     message.append("すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
-                "」\nで、" + str(minvalue) + "点でした><\n")
+                   "」\nで、" + str(minvalue) + "点でした><\n")
 
     message.append("ウィークリーレポートの総計は、" + str(totalvalue) + "点でした\n" \
-                "来週もがんばりましょう！！")
+                                                         "来週もがんばりましょう！！")
 
     """
     message = 'RESULT' + \
@@ -182,6 +174,8 @@ def set_message_WR(analyzed_value):
               '\nTOTAL = ' + str(analyzed_value['total'])
     """
     return message
+
+
 """
 def dammy():
     dic = {'max': {'score': 0.8, 'sentense':"あｆｐふぁｗｋぱ"},
