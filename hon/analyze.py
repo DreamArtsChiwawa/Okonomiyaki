@@ -107,15 +107,28 @@ def open_old_WR(info):
 
     max_score_list = []
     max_sentence_list = []
+    min_score_list = []
+    min_sentence_list = []
+    all_score_list = []
 
     for fname in filename_list:
-        mscore = result_pickle[fname]['max']['score']
-        if mscore >= 0.8:
-            max_score_list.append(mscore)
+        max_score = result_pickle[fname]['max']['score']
+        if max_score >= 0.8:
+            max_score_list.append(max_score)
             max_sentence_list.append(result_pickle[fname]['max']['sentence'])
 
+        min_score = result_pickle[fname]['min']['score']
+        if min_score <= -0.5:
+            min_score_list.append(min_score)
+            min_sentence_list.append(result_pickle[fname]['min']['sentence'])
+
+        all_score_list += result_pickle[fname]['score_list']
+
     dic = {'max_score_list': max_score_list,
-           'max_sentence_list': max_sentence_list
+           'max_sentence_list': max_sentence_list,
+           'min_score_list': min_score_list,
+           'min_sentence_list': min_sentence_list,
+           'all_score_list': all_score_list
            }
 
     return dic
