@@ -113,7 +113,7 @@ def send_file(companyId, groupId, file_path):
 
     }
 
-    content = {
+    files = {
 
         'file': ('ori.png',image,'image/png')
 
@@ -125,7 +125,7 @@ def send_file(companyId, groupId, file_path):
 
     }
 
-    res = requests.post(url, headers=headers, files=content, data=data)
+    res = requests.post(url, headers=headers, files=files, data=data)
 
 
 def get_score(score):
