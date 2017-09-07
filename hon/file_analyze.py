@@ -28,10 +28,10 @@ def main():
 
     # print(value_list)
 
-    with open('../staff_wr_sample/WR_analyze_result.pickle', 'wb') as pcl:
+    with open(sys.argv[2], 'wb') as pcl:
         pickle.dump(value_list, pcl)  # リストをpickleへ保存
 
-    with open('../staff_wr_sample/WR_analyze_result.pickle', 'rb') as pcl:
+    with open(sys.argv[2], 'rb') as pcl:
         result_pickle = pickle.load(pcl)  # pickleの読込み
         print("\n----------------------------- ↓ pickle ↓ -----------------------------\n\n" + \
                 str(result_pickle) + \
