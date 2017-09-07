@@ -31,7 +31,7 @@ def messages():
 
         if messageText == ("コマンド"):
             state = "no need analyze"
-            command_message = "みしまくんはね、weekly reportや文章を入力すると、ポジティブ度を教えてあげるよ。\n"　\
+            command_message = "みしまくんはね、weekly reportや文章を入力すると、ポジティブ度を教えてあげるよ。\n" \
                                 + "「ポジティブランキング 2017/03」　と打つとその月のポジティブな文章を教えるよ。 \n" \
                                 + "「ネガティブランキング 2017/03」　と打つとその月のネガティブな文章を教えるよ。"
 
