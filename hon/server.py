@@ -67,7 +67,7 @@ def messages():
             send_message(companyId, groupId, return_message[2])
 
 
-        elif state = "short message":
+        elif state == "short message":
             i = 1
         #else:
 
@@ -127,7 +127,7 @@ def send_file(companyId, groupId, file_path):
     }
 
     file_name = os.path.basename(faile_path)
-    
+
     image = open(file_path,"rb")
 
     files = {
