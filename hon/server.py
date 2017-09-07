@@ -65,6 +65,7 @@ def messages():
                 return_message = set_message_SH(analyzed_message)
 
                 send_message(companyId, groupId, return_message[0])
+                
             else:
                 send_message(companyId, groupId,"「" + messageText + "」は受付ませんでした。")
                 print("! MESSAGE REJECTED")
@@ -170,6 +171,7 @@ def set_message_WR(analyzed_value):
                                                          "来週もがんばりましょう！！")
 
     return message
+
 
 def set_message_LG(analyzed_value):
     maxvalue = get_score(analyzed_value['max']['score'])
