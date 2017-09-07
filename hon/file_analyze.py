@@ -2,7 +2,7 @@ import analyze
 import preprocess
 import glob
 import pickle
-
+import sys
 
 # 入力されたファイル名のWRを全て解析
 def WR_analyze(WR_list, value_list):
@@ -19,7 +19,10 @@ def WR_analyze(WR_list, value_list):
 
 
 def main():
-    WR_list = glob.glob('../staff_wr_sample/*.utf')  # 拡張子がutfのファイル(WR)のファイル名をリスト形式で取得
+    #WR_list = glob.glob('../staff_wr_sample/*.utf')  # 拡張子がutfのファイル(WR)のファイル名をリスト形式で取得
+    WR_list = glob.glob(sys.argv[1])  # 拡張子がutfのファイル(WR)のファイル名をリスト形式で取得
+
+    print(WR_list)
 
     value_list = []
 
@@ -27,10 +30,10 @@ def main():
 
     # print(value_list)
 
-    with open('../staff_wr_sample/WR_analyze_result.pickle', 'wb') as pcl:
+    with open(sys.argv[2], 'wb') as pcl:
         pickle.dump(value_list, pcl)  # リストをpickleへ保存
 
-    with open('../staff_wr_sample/WR_analyze_result.pickle', 'rb') as pcl:
+    with open(sys.argv[2], 'rb') as pcl:
         result_pickle = pickle.load(pcl)  # pickleの読込み
         print("\n----------------------------- ↓ pickle ↓ -----------------------------\n\n" + \
                 str(result_pickle) + \
