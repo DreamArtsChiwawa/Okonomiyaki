@@ -33,8 +33,8 @@ def main():
     with open('../staff_wr_sample/WR_analyze_result.pickle', 'rb') as pcl:
         result_pickle = pickle.load(pcl)  # pickleの読込み
         print("\n----------------------------- ↓ pickle ↓ -----------------------------\n\n" + \
-              str(result_pickle) + \
-              "\n\n----------------------------- ↑ pickle ↑ -----------------------------")
+                str(result_pickle) + \
+            "\n\n----------------------------- ↑ pickle ↑ -----------------------------")
 
 
 if __name__ == '__main__':

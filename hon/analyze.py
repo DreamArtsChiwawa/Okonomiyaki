@@ -65,12 +65,12 @@ def set_dict(annotations, text_list):
     # print('center score is {}'.format(center_score))
 
     dic = {'max': {'score': max_score, 'sentence': text_list[score_list.index(max_score)]},
-           'min': {'score': min_score, 'sentence': text_list[score_list.index(min_score)]},
-           'sum': sum_score,
-           'ave': ave_score,
-           'mid': {'score': mid_score},
-           'magnitude': magnitude,
-           'total': total_score}
+            'min': {'score': min_score, 'sentence': text_list[score_list.index(min_score)]},
+            'sum': sum_score,
+            'ave': ave_score,
+            'mid': {'score': mid_score},
+            'magnitude': magnitude,
+            'total': total_score}
 
     return dic
 
