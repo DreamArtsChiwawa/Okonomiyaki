@@ -39,12 +39,12 @@ def messages():
         elif messageText.find('\n') >= 1 or messageText.find("。") >= 2:  # WEEKLY REPORTでない長文
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "long message"
-        else:  # 短文
+        else:
+            state = "short message"
             if messageText.find("。") >= 1:
                 preprocessed_text = preprocess.preprocess(messageText)
             else:
                 preprocessed_text = messageText
-            state = "short message"
 
 
         if state != "no need analyze":
@@ -114,7 +114,6 @@ def send_message(companyId, groupId, message):
         'text': message
 
     }
-
     requests.post(url, headers=headers, data=json.dumps(content))
 
 
