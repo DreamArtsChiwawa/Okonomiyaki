@@ -15,7 +15,7 @@ def WR_analyze(WR_list, value_list):
                 raw_text = f.read()
             except:
                 print(WR_name)
-                exit(1)
+                continue
         print(raw_text)
         preprocessed_text = preprocess.preprocess(raw_text)
         analyze_dict = (analyze.analyze(preprocessed_text))
