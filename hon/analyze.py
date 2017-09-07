@@ -9,7 +9,7 @@ def analyze(text):
     """Run a sentiment analysis request on text within a passed filename."""
     language_client = language.Client()
 
-    print(text)
+    #print(text)
 
     # review_file = head.get_text(text)
     #review_file = text.replace('¥n', '\n')  # 改行文字の置き換え
@@ -50,8 +50,8 @@ def set_dict(annotations, text_list):
 
 
 
-    print('Overall Sentiment: score of {} with magnitude of {}'.format(
-        score, magnitude))
+    # print('Overall Sentiment: score of {} with magnitude of {}'.format(
+    #     score, magnitude))
 
     sum_score = sum(score_list)
     ave_score = sum_score / len(score_list)
