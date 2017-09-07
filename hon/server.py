@@ -90,10 +90,9 @@ def send_message(companyId, groupId, message):
 
 # Send file to Chiwawa server
 def send_file(companyId, groupId, file_path):
+
     url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
 
-    file_path = 'ori.png'
-    
     headers = {
 
         'X-Chiwawa-API-Token': env['CHIWAWA_API_TOKEN']
@@ -121,7 +120,7 @@ def send_file(companyId, groupId, file_path):
 
     }
 
-    res = requests.post(url, headers=headers, files=files, data=data)
+    res = requests.post(url, headers=headers, files=content, data=data)
 
     
 def get_score(score):
