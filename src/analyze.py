@@ -36,6 +36,7 @@ def set_dict(annotations, text_list):
         sentence_sentiment = sentence.sentiment.score
         score_list.append(sentence_sentiment)
 
+    print(score_list)
     sum_score = sum(score_list)
 
     if len(score_list) != 0:
