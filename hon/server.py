@@ -36,12 +36,12 @@ def messages():
         if messageText.find('<< WEEKLY REPORT >>') >= 0:  # WEEKLY REPORT
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "WR"
-        elif messageText.find('\n') >= 1 or messageText.find("。") >= 2:  # WEEKLY REPORTでない長文
+        elif messageText.find('\n') >= 0 or messageText.find("。") >= 1:  # WEEKLY REPORTでない長文
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "long message"
         else:
             state = "short message"
-            if messageText.find("。") >= 1:
+            if messageText.find("。") >= 0:
                 preprocessed_text = preprocess.preprocess(messageText)
             else:
                 preprocessed_text = messageText
@@ -79,8 +79,8 @@ def messages():
         #if state != "message rejected":
         if state != "short message":
             send_file(companyId, groupId, "./fig_histgram.png")
-        print("MESSAGES SENDED")  # log
         print(state)
+        print("MESSAGES SENDED")  # log
         return "OK"
 
     else:
