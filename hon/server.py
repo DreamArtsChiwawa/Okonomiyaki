@@ -126,17 +126,19 @@ def send_file(companyId, groupId, file_path):
 
     }
 
+    file_name = os.path.basename(faile_path)
+    
     image = open(file_path,"rb")
 
     files = {
 
-        'file': ('ori.png',image,'image/png')
+        'file': (file_name,image,'image/png')
 
     }
 
     data = {
 
-	'fileName':'ori.png'
+	'fileName':file_name
 
     }
 
