@@ -12,8 +12,8 @@ def analyze(text):
     print(text)
 
     # review_file = head.get_text(text)
-    review_file = text.replace('¥n', '\n')    # 改行文字の置き換え
-    text_list = review_file.split("\n")             # 改行文字で分かち書き
+    review_file = text.replace('¥n', '\n')  # 改行文字の置き換え
+    text_list = review_file.split("\n")  # 改行文字で分かち書き
     # print(review_file)
     # print(text_list)
     # with open(movie_review_filename, 'r') as review_file:
@@ -55,7 +55,7 @@ def set_dict(annotations, text_list):
     mid_score = np.median(score_list)
     total_score = score
 
-    #print(score_list)
+    # print(score_list)
     save_fig(score_list)
 
     # print('total score is {}'.format(sum_score))
@@ -74,9 +74,10 @@ def set_dict(annotations, text_list):
 
     return dic
 
-def  save_fig(score_list):
-    file_name ="../test/fig_histgram.png"
+
+def save_fig(score_list):
+    file_name = "../test/fig_histgram.png"
 
     n, bins, patch = plt.hist(score_list, bins=np.arange(-1.0, 1.01, 0.1))  # 度数分布表の取得   
-    #plt.savefig("fig_" + datetime.now().strftime("%Y%m%d-%H%M%S") + ".png") # ヒストグラムをファイルに出力
+    # plt.savefig("fig_" + datetime.now().strftime("%Y%m%d-%H%M%S") + ".png") # ヒストグラムをファイルに出力
     plt.savefig(file_name)
