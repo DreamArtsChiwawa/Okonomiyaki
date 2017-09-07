@@ -73,7 +73,7 @@ def messages():
         
             
         if state != "message rejected":
-            send_message(companyId, groupId, "0点が一番ネガティブ、100点が一番ポジティブ！")
+            send_message(companyId, groupId, "0点が一番ネガティブ、50点が真ん中、100点が一番ポジティブ！")
         if state != "short message":
             send_file(companyId, groupId, "../test/fig_histgram.png")
         print("MESSAGES SENDED")  # log
