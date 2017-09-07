@@ -40,7 +40,7 @@ def messages():
         if messageText.find('<< WEEKLY REPORT >>') >= 0: # WEEKLY REPORT
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "WR"
-        elif messagesText.find('\n') >= 1:　# WEEKLY REPORTでない長文
+        elif messageText.find('\n') >= 1: # WEEKLY REPORTでない長文
             preprocessed_text = messageText
             state = "long message"
         else: # 短文
@@ -121,7 +121,7 @@ def send_file(companyId, groupId, file_path):
 	'fileName':'ori.png'
 
     }
-    
+
     res = requests.post(url, headers=headers, files=files, data=data)
 
 
