@@ -49,7 +49,7 @@ def messages():
 
         if state != "no need analyze":
             analyzed_dict = analyze.analyze(preprocessed_text)
-            analyzed.savefig(analyzed_dict['score_list'])
+            analyze.savefig(analyzed_dict['score_list'])
 
             if state == "WR":  # WEEKLY REPORTだった場合のメッセージリターン
                 return_message = set_message_WR(analyzed_message)  # メッセージを整形
@@ -78,7 +78,7 @@ def messages():
 
         #if state != "message rejected":
         if state != "short message":
-            send_file(companyId, groupId, ".fig_histgram.png")
+            send_file(companyId, groupId, "./fig_histgram.png")
         print("MESSAGES SENDED")  # log
         print(state)
         return "OK"
