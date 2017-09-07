@@ -52,7 +52,7 @@ def messages():
         elif messageText.find('ポジティブランキング') >= 0:
             month = messageText[11:18]
             month = month.split('/')
-            print('{0}{1}.month'.format(month))
+            print(month[0]+month[1])
             dic = analyze.open_old_WR('staff_wr_sample')
             print(dic)
             state = "no need analyze"
