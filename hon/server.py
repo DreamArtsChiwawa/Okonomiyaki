@@ -101,7 +101,7 @@ def send_file(companyId, groupId, file_path):
 
     }
 
-    image = open(file_path)
+    image = open(file_path,"rb")
 
     files = {
 
@@ -114,8 +114,6 @@ def send_file(companyId, groupId, file_path):
 	'fileName':'ori.png'
 
     }
-	
-    pint(url);
     
     res = requests.post(url, headers=headers, files=files, data=data)
 
