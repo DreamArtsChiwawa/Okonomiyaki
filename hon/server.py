@@ -123,7 +123,7 @@ def messages():
             send_message(companyId, groupId,"「" + messageText + "」は受付ませんでした。")
             print("! MESSAGE REJECTED")
             state = "message rejected"
-            print(message)
+            # print(message)
         return "OK"
 
     else:
@@ -252,7 +252,7 @@ def set_message_MAXranking(analyzed_value):
     i = 0
     for line in messagelist:
         message += line + "\n"
-        if i > 5:
+        if i > 4:
             break
         i += 1
 
