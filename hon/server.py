@@ -111,9 +111,10 @@ def send_message(companyId, groupId, message):
 
     content = {
 
-        'text': message}
+        'text': message
 
     }
+
     requests.post(url, headers=headers, data=json.dumps(content))
 
 
