@@ -11,9 +11,11 @@ SCORE_THRESHOLD = 0.8
 
 def analyze(text):
 
-    language_client = language.Client()
+    if text == '':
+        print(text)
+        exit(1)
 
-    print(text)
+    language_client = language.Client()
 
     text_list = text.split("\n")  # 改行文字で分かち書き
 
