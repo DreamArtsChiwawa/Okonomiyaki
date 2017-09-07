@@ -55,7 +55,9 @@ def messages():
             month = month[0] + month[1]
             dic = analyze.open_old_WR(month + ".month")
             return_message = set_message_MAXranking(dic)
+            print("return_message")
             send_message(companyId, groupId, return_message)
+
             state = "no need analyze"
 
         elif messageText.find('ネガティブランキング') >= 0:
@@ -243,8 +245,7 @@ def set_message_MAXranking(analyzed_value):
 
     for num, maxsentense in enumerate(analyzed_value['max_sentence_list']):
         message.append("「" + maxsentense + "」は、" + maxscorelist[num] + "点でした。")
-    print("maxsentenses↓")
-    print(message)
+
     return message
 
 """
