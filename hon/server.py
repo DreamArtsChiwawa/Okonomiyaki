@@ -29,22 +29,31 @@ def messages():
 
         state = "default"
 
-        if messageText.find('週報') >= 0 and messageText.find('判断') >= 0:
-            send_message(companyId, groupId, "判断したい週報を入力してください！")
+        if messageText == ("コマンド"):
             state = "no need analyze"
+            command_message = "みしまくんはね、weekly reportや文章を入力すると、ポジティブ度を教えてあげるよ。\n　\
+                                「ポジティブランキング 2017/03」　と打つとその月のポジティブな文章を教えるよ。 \n \
+                                「ネガティブランキング 2017/03」　と打つとその月のネガティブな文章を教えるよ。"
 
-        if messageText.find('<< WEEKLY REPORT >>') >= 0:  # WEEKLY REPORT
+            send_message(companyId, groupId, command_message)
+
+        elif messageText.find('<< WEEKLY REPORT >>') >= 0:  # WEEKLY REPORT
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "WR"
-        elif messageText.find('\n') >= 1 or messageText.find("。") >= 2:  # WEEKLY REPORTでない長文
+
+        elif messageText.count("。") >= 2:  # WEEKLY REPORTでない長文
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "long message"
-        else:  # 短文
-            if messageText.find("。") >= 1:
+
+        elif messageText.find('週報') >= 0 and messageText.find('判断') >= 0:
+            send_message(companyId, groupId, "判断したい週報を入力してください！")
+            state = "no need analyze"
+        else:
+            state = "short message"
+            if messageText.find("。") >= 0:
                 preprocessed_text = preprocess.preprocess(messageText)
             else:
                 preprocessed_text = messageText
-            state = "short message"
 
 
         if state != "no need analyze":
@@ -79,8 +88,9 @@ def messages():
         #if state != "message rejected":
         if state != "short message":
             send_file(companyId, groupId, "./fig_histgram.png")
-        print("MESSAGES SENDED")  # log
         print(state)
+        print(messageText.find('\n'),messageText.find('。'))
+        print("MESSAGES SENDED")  # log
         return "OK"
 
     else:
@@ -164,8 +174,8 @@ def set_message_WR(analyzed_value):
     message.append("すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
                    "」\nで、" + str(minvalue) + "点でした><\n")
 
-    message.append("ウィークリーレポートの総計は、" + str(totalvalue) + "点でした\n" \
-                                                         "来週もがんばりましょう！！")
+    message.append("ウィークリーレポートの合計は、" + str(totalvalue) + "点でした\n" \
+                    "来週もがんばりましょう！！")
 
     return message
 
@@ -203,6 +213,8 @@ message = 'RESULT' + \
 '\nMID = ' + str(analyzed_value['mid']['score']) + \
 '\nMAGNITUDE = ' + str(analyzed_value['magnitude']) + \
 '\nTOTAL = ' + str(analyzed_value['total'])
+"""
+
 
 def dammy():
     dic = {'max': {'score': 0.8, 'sentense':"あｆｐふぁｗｋぱ"},
@@ -211,10 +223,14 @@ def dammy():
            'ave': -0.5,
            'mid': {'score': 0},
            'magnitude': 11,
-           'total': -4}
+           'total': -4,
+           'max_list': {'max_score_list': [0.9, 0.8, 0.8],
+                        'max_sentence_list': ['I am Happy', 'Hello good morning', 'Happy New Year']
+                        }
+           }
 
     return dic
-"""
+
 
 if __name__ == '__main__':
     app.run(host='', port=80, debug=True)
