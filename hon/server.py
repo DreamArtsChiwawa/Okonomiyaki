@@ -50,7 +50,7 @@ def messages():
             state = "no need analyze"
 
         elif messageText.find('ポジティブランキング') >= 0:
-            day = test.split(",")
+            # day = test.split(",")
             #dic = dummy('20xxxx.month')
             dic = analyze.open_old_WR('staff_wr')
             print(dic)
