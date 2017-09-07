@@ -99,16 +99,18 @@ def save_fig(score_list):
 
 def open_old_WR(info):
     path = '../pickle/' + info + '.pickle'
-    key = '../pickle' + info +
-    with open(path, 'rb') as pcl
+    key = '../pickle' + info
+    with open(path, 'rb') as pcl:
         result_pickle = pickle.load()
 
     tmp = result_pickle.keys()
 
     return tmp
 
+
 def main():
-    print(open_old_WR('staff'))
+    print(open_old_WR('staff_wr_sam'))
+
 
 if __name__ == '__main__':
     main()
