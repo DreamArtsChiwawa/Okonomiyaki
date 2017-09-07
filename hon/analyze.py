@@ -74,10 +74,9 @@ def set_dict(annotations, text_list):
 
     return dic
 
-
 def  save_fig(score_list):
-    file_name = '../test/fig_histgram.png'
+    file_name ="../test/fig_histgram.png"
 
     n, bins, patch = plt.hist(score_list, bins=np.arange(-1.0, 1.01, 0.1))  # 度数分布表の取得   
     #plt.savefig("fig_" + datetime.now().strftime("%Y%m%d-%H%M%S") + ".png") # ヒストグラムをファイルに出力
-    plt.savefig(file_name)
+    plt.savefig(filename)
