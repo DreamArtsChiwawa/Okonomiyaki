@@ -8,63 +8,86 @@ TAGS = ['総括',
         'AR',
         '次週']
 
+IGNORE = ['◇',
+          '◆',
+          '●',
+          '○',
+          '○',
+          '==',
+          '--',
+          'ーー',
+          '＝＝',
+          ':',
+          '：',
+          '*',
+          '＊',
+          ]
+
+SENTENCE_TH = 5
+
 
 def main():
-    with open('../staff_wr_sample/9.mes.utf', 'rb') as f:
-        # raw_text = f.readlines()
-        raw_text = f.read().decode()
+    with open('../staff_wr_sample/1061.mes.utf', 'rt') as f:
+        raw_text = f.read()
 
-    preprocessed_text = preprocess(raw_text)
-    print(preprocessed_text)
+    print(preprocess(raw_text))
 
 
 def preprocess(raw_text):
 
     text_list = text2list(raw_text)
+    text_list = select_line(text_list)
+    text_list = remake_sentence(text_list)
+    text = list2text(text_list)
 
-    content = OrderedDict()
+    return text
 
+
+def list2text(input_list):
+
+    text = ''
+
+    for line in input_list:
+        text += line + '\n'
+
+    return text
+
+
+def select_line(raw_list):
+
+    text_list = []
+
+    for line in raw_list:
+        tmp = line.strip()
+        if tmp.find('。') + tmp.find('、') >= 0 and (pre_search(tmp)):
+            text_list.append(tmp)
+
+    return text_list
+
+
+def remake_sentence(input_list):
+
+    text = ''
+
+    for line in input_list:
+        text += line
+
+    text_list = text.split('。')
+    text_list = remove_blank(text_list)
+
+    return text_list
+
+
+def pre_search(line):
     for tag in TAGS:
-        content[tag] = search_tag(tag, text_list)
+        if line.find(tag) >= 0:
+            return False
 
-    sentences = []
-    for key, value in content.items():
-        sentence = ''
-        for v in value:
-            sentence += v
+    for tag in IGNORE:
+        if line.find(tag) >= 0:
+            return False
 
-        tmp = sentence.split('。')
-        tmp = remove_blank(tmp)
-        for item in tmp:
-            sentences.append(item)
-
-    result = ''
-    for s in sentences:
-        result += s + "\n"
-
-    return result
-
-
-def search_tag(tag, text_list):
-    tag_flag = 0
-    tag_content = []
-    for text in text_list:
-        if tag_flag:
-            for t in TAGS:
-                if tag_flag == 0:
-                    break
-                if text.find(t) >= 0 or (tag == t == '次週' and text.find("。") < 0 and text.find("、") < 0):
-                    tag_flag = 0
-                    continue
-            if tag_flag == 0:
-                break
-            tag_content.append(text)
-
-        if text.find(tag) >= 0:
-            tag_flag = 1
-            continue
-
-    return tag_content
+    return True
 
 
 def text2list(raw_text):
