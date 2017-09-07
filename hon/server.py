@@ -69,10 +69,9 @@ def messages():
             state = "no need analyze"
 
         elif messageText.find('ヒストグラム') >= 0:
-            month = messageText[11:18]
+            month = messageText[7:15]
             month = month.split('/')
             month = month[0] + month[1]
-            print(month + ".month")
             dic = analyze.open_old_WR(month + ".month")
             analyze.save_fig(dic['all_socre_list'])
             state = "no need analyze"
