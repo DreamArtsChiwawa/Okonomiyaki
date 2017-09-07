@@ -11,7 +11,11 @@ def WR_analyze(WR_list, value_list):
     for WR_name in WR_list:
         with open(WR_name, 'r') as f:
             # raw_text = f.readlines()
-            raw_text = f.read()
+            try:
+                raw_text = f.read()
+            except:
+                print(WR_name)
+                exit(1)
         print(raw_text)
         preprocessed_text = preprocess.preprocess(raw_text)
         analyze_dict = (analyze.analyze(preprocessed_text))
@@ -40,7 +44,7 @@ def main():
     # with open('../staff_wr_sample/WR_analyze_result.pickle', 'wb') as pcl:
     with open('hoge.pickle', 'wb') as pcl:
         pickle.dump(value_list, pcl)  # リストをpickleへ保存
-    
+
     with open('hoge.pickle', 'rb') as pcl:
         result_pickle = pickle.load(pcl)  # pickleの読込み
         print("\n----------------------------- ↓ pickle ↓ -----------------------------\n\n" + \
