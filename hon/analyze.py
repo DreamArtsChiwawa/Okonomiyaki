@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
+import pickle
 from google.cloud import language
 from datetime import datetime
 
@@ -80,7 +81,9 @@ def set_dict(annotations, text_list):
             'mid': {'score': mid_score},
             'magnitude': magnitude,
             'total': total_score,
-            'score_list': score_list}
+            'score_list': score_list 
+            #'max_list': {'score': ??, 'sentence_list'}
+            }
 
     return dic
 
@@ -91,3 +94,8 @@ def save_fig(score_list):
     n, bins, patch = plt.hist(score_list, bins=np.arange(-1.0, 1.01, 0.1))  # 度数分布表の取得   
     # plt.savefig("fig_" + datetime.now().strftime("%Y%m%d-%H%M%S") + ".png") # ヒストグラムをファイルに出力
     plt.savefig(file_name)
+
+
+
+
+

@@ -7,6 +7,7 @@ from tqdm import tqdm
 
 # 入力されたファイル名のWRを全て解析
 def WR_analyze(WR_list, value_list):
+    week_dic = {}
 
     for WR_name in tqdm(WR_list):
         with open(WR_name, 'r') as f:
@@ -19,9 +20,12 @@ def WR_analyze(WR_list, value_list):
         #print(raw_text)
         preprocessed_text = preprocess.preprocess(raw_text)
         analyze_dict = (analyze.analyze(preprocessed_text))
-        analyze_dict['WR_name'] = WR_name
         value_list.append(analyze_dict)
-    return value_list
+
+        week_dic[WR_name] = analyze_dict
+
+    #print(week_dic)
+    return week_dic
 
 
 def main():
@@ -32,20 +36,29 @@ def main():
     #WR_list.pop()
     del WR_list[0]      # 先頭の要素(第一引数:WRが置いてある場所のパス指定)を削除
 
-    # print("sys arg", sys.argv)
-    # print("WR LIST", WR_list)
+    #print("sys arg", sys.argv)
+    #print("WR LIST", WR_list)
 
-    value_list = []
+    week_dic = []
 
-    value_list = WR_analyze(WR_list, value_list)  # 全てのWRを解析
+    week_dic = WR_analyze(WR_list, week_dic)  # 全てのWRを解析
 
-    # print(value_list)
+    
+    # パスから'20YY年XX月'の文字列を抽出
+    tmp = sys.argv[0]
+    index = tmp.rfind('/')
+    tmp = tmp[:index]
+    index = tmp.find('/')
+    tmp = tmp[index:]
+    tmp = tmp[1:]           
+    #print(tmp)     # '20YY年XX月'が抽出できているかの確認用
 
-    # with open('../staff_wr_sample/WR_analyze_result.pickle', 'wb') as pcl:
-    with open('hoge.pickle', 'wb') as pcl:
-        pickle.dump(value_list, pcl)  # リストをpickleへ保存
+    filename = tmp
+    # # with open('../staff_wr_sample/WR_analyze_result.pickle', 'wb') as pcl:
+    with open('../pickle/' + filename + '.pickle', 'wb') as pcl:
+        pickle.dump(week_dic, pcl)  # リストをpickleへ保存
 
-    # with open('hoge.pickle', 'rb') as pcl:
+    # with open(filename, 'rb') as pcl:
     #     result_pickle = pickle.load(pcl)  # pickleの読込み
     #     print("\n----------------------------- ↓ pickle ↓ -----------------------------\n\n" + \
     #           str(result_pickle) + \
