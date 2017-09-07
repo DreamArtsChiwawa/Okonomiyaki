@@ -36,7 +36,7 @@ def messages():
         if messageText.find('<< WEEKLY REPORT >>') >= 0:  # WEEKLY REPORT
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "WR"
-        elif messageText.find('\n') >= 1:  # WEEKLY REPORTでない長文
+        elif messageText.find('\n') >= 1 or messageText.find('.') >= 2 or messageText.find('。') >= 2:  # WEEKLY REPORTでない長文
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "long message"
         else:  # 短文
@@ -46,7 +46,7 @@ def messages():
 
         if state != "no need analyze":
             analyzed_message = analyze.analyze(preprocessed_text)
-        else:
+            
             if state == "WR":  # WEEKLY REPORTだった場合のメッセージリターン
                 return_message = set_message_WR(analyzed_message)  # メッセージを整形
 
@@ -70,13 +70,14 @@ def messages():
                 send_message(companyId, groupId,"「" + messageText + "」は受付ませんでした。")
                 print("! MESSAGE REJECTED")
                 state = "message rejected"
-                
+        
+            
         if state != "message rejected":
-            send_message(companyId, groupId, "0点が一番ネガティブ、100点が一番ポジティブ！")
-        if state == "short message":
+            send_message(companyId, groupId, "0点が一番ネガティブ、50点が真ん中、100点が一番ポジティブ！")
+        if state != "short message":
             send_file(companyId, groupId, "../test/fig_histgram.png")
         print("MESSAGES SENDED")  # log
-
+        print(state)
         return "OK"
 
     else:
