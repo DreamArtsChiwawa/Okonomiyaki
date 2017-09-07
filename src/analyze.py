@@ -68,7 +68,7 @@ def set_dict(annotations):
 def save_fig(score_list):
 
     file_name = "fig_histogram.png"
-
+    plt.figure()
     plt.hist(score_list, bins=np.arange(-1.0, 1.01, 0.1), )  # 度数分布表の取得
     plt.savefig(file_name)
 

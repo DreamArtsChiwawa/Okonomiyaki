@@ -27,8 +27,13 @@ def WR_analyze(WR_list):
 
             week_dic[WR_name] = analyze_dict
         except:
+<<<<<<< HEAD
             print(WR_name, "SOME ERROR")
             continue
+=======
+            print("DICTIONARY ERROR", preprocessed_text)
+            exit(1)
+>>>>>>> 828d126695a0ffe02e0c0d38a79b6362f82ad2bb
 
     return week_dic
 
