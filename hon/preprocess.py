@@ -26,6 +26,7 @@ IGNORE = ['◇',
 SENTENCE_TH = 5
 
 
+
 def main():
     with open('../staff_wr_sample/1061.mes.utf', 'rb') as f:
         # raw_text = f.readlines()
@@ -36,6 +37,7 @@ def main():
 
 
 def preprocess(raw_text):
+
     text_list = text2list(raw_text)
 
     content = OrderedDict()
@@ -56,29 +58,9 @@ def preprocess(raw_text):
 
     result = ''
     for s in sentences:
-        if is_ignore(s) or is_short(s):
-            continue
-
-        else:
-            result += s + "\n"
+        result += s + "\n"
 
     return result
-
-
-def is_ignore(sentence):
-    for ignr in IGNORE:
-        if sentence.find(ignr) >= 0:
-            return True
-
-    return False
-
-
-def is_short(sentence):
-    if len(sentence) > SENTENCE_TH:
-        return False
-
-    else:
-        return True
 
 
 def search_tag(tag, text_list):
