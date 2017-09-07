@@ -73,7 +73,7 @@ def messages():
         send_message(companyId, groupId, return_message[2])
 
         # send_message(companyId, groupId, "みしまくんは写真を送ることに成功しましたか？")
-        # send_file(companyId, groupId, "ori.png")
+        send_file(companyId, groupId, "../test/fig_histgram.png")
         print(set_message_WR(value))
         print("MESSEAGES SENDED")  # log
 
