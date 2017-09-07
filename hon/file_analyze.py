@@ -14,7 +14,7 @@ def WR_analyze(WR_list, value_list):
             try:
                 raw_text = f.read()
             except:
-                print(WR_name)
+                #print(WR_name)
                 continue
         #print(raw_text)
         preprocessed_text = preprocess.preprocess(raw_text)
