@@ -204,6 +204,8 @@ message = 'RESULT' + \
 '\nMID = ' + str(analyzed_value['mid']['score']) + \
 '\nMAGNITUDE = ' + str(analyzed_value['magnitude']) + \
 '\nTOTAL = ' + str(analyzed_value['total'])
+"""
+
 
 def dammy():
     dic = {'max': {'score': 0.8, 'sentense':"あｆｐふぁｗｋぱ"},
@@ -212,10 +214,14 @@ def dammy():
            'ave': -0.5,
            'mid': {'score': 0},
            'magnitude': 11,
-           'total': -4}
+           'total': -4,
+           'max_list': {'max_score_list': [0.9, 0.8, 0.8],
+                        'max_sentence_list': ['I am Happy', 'Hello good morning', 'Happy New Year']
+                        }
+           }
 
     return dic
-"""
+
 
 if __name__ == '__main__':
     app.run(host='', port=80, debug=True)
