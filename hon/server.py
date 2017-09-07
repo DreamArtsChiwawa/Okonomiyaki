@@ -41,7 +41,6 @@ def messages():
             #preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "WR"
         elif messageText.find('\n') >= 1: # WEEKLY REPORTでない長文
-
             state = "long message"
         else: # 短文
             #preprocessed_text = messageText
