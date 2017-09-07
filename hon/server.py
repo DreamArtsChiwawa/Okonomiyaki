@@ -74,6 +74,7 @@ def messages():
             month = month[0] + month[1]
             dic = analyze.open_old_WR(month + ".month")
             analyze.save_fig(dic['all_score_list'])
+            send_file(companyId, groupId, 'fig_histgram.png')
             state = "no need analyze"
 
 
