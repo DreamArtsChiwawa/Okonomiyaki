@@ -109,7 +109,7 @@ def open_old_WR(info):
 
 
 def main():
-    print(open_old_WR('staff_wr_sam'))
+    print(open_old_WR('staff_wr_sample'))
 
 
 if __name__ == '__main__':
