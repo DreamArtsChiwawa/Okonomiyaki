@@ -235,7 +235,7 @@ def set_message_SH(analyzed_value):
 
 def set_message_MAXranking(analyzed_value):
     message = []
-    for num, maxscore in enumerate(analyzed_value['max_score_list'])
+    for num, maxscore in enumerate(analyzed_value['max_score_list']):
         maxscore.append(get_score(maxscore))
 
     for num, maxsentense in enumerate(analyzed_value['max_sentence_list']):
