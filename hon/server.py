@@ -49,7 +49,7 @@ def messages():
 
         if state != "no need analyze":
             analyzed_dict = analyze.analyze(preprocessed_text)
-            analyze.savefig(analyzed_dict['score_list'])
+            analyze.save_fig(analyzed_dict['score_list'])
 
             if state == "WR":  # WEEKLY REPORTだった場合のメッセージリターン
                 return_message = set_message_WR(analyzed_message)  # メッセージを整形
