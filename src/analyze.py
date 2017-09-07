@@ -13,6 +13,8 @@ def analyze(text):
 
     language_client = language.Client()
 
+    print(text)
+
     text_list = text.split("\n")  # 改行文字で分かち書き
 
     document = language_client.document_from_html(text)
