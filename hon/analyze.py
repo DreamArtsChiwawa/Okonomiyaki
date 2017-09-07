@@ -54,7 +54,10 @@ def set_dict(annotations, text_list):
     #     score, magnitude))
 
     sum_score = sum(score_list)
-    ave_score = sum_score / len(score_list)
+    if(len(score_list) != 0)
+        ave_score = sum_score / len(score_list)
+    else
+        ave_score = 0
     max_score = max(score_list)
     min_score = min(score_list)
     mid_score = np.median(score_list)
