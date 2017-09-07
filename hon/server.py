@@ -72,6 +72,7 @@ def messages():
             month = messageText[11:18]
             month = month.split('/')
             month = month[0] + month[1]
+            print(month + ".month")
             dic = analyze.open_old_WR(month + ".month")
             analyze.save_fig(dic['all_socre_list'])
             state = "no need analyze"
