@@ -52,9 +52,27 @@ def messages():
         elif messageText.find('ポジティブランキング') >= 0:
             month = messageText[11:18]
             month = month.split('/')
-            print(month[0]+month[1])
-            dic = analyze.open_old_WR('staff_wr_sample')
-            print(dic)
+            month = month[0] + month[1]
+            dic = analyze.open_old_WR(month + ".month")
+            return_message = set_message_MAXranking(dic)
+            send_message(companyId, groupId, return_message)
+            state = "no need analyze"
+
+        elif messageText.find('ネガティブランキング') >= 0:
+            month = messageText[11:18]
+            month = month.split('/')
+            month = month[0] + month[1]
+            dic = analyze.open_old_WR(month + ".month")
+            return_message = set_message_MINranking(dic)
+            send_message(companyId, groupId, return_message)
+            state = "no need analyze"
+
+        elif messageText.find('ヒストグラム') >= 0:
+            month = messageText[11:18]
+            month = month.split('/')
+            month = month[0] + month[1]
+            dic = analyze.open_old_WR(month + ".month")
+            analyze.save_fig(dic['all_socre_list'])
             state = "no need analyze"
 
 
@@ -215,6 +233,16 @@ def set_message_SH(analyzed_value):
 
     return message
 
+def set_message_MAXranking(analyzed_value):
+    message = []
+    for num, maxscore in enumerate(analyzed_value['max_score_list'])
+        maxscore.append(get_score(maxscore))
+
+    for num, maxsentense in enumerate(analyzed_value['max_sentence_list']):
+        message.append("「" + maxsentense "」は、" + maxscore[num] + "点でした。")
+    print("maxsentenses↓")
+    print(message)
+    return message
 
 """
 message = 'RESULT' + \
