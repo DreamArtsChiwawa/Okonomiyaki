@@ -251,7 +251,7 @@ def set_message_MAXranking(analyzed_value):
     message = ""
     i = 0
     for line in messagelist:
-        text += line + "\n"
+        message += line + "\n"
         if i > 5:
             break
         i += 1
