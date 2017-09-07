@@ -92,6 +92,8 @@ def send_message(companyId, groupId, message):
 def send_file(companyId, groupId, file_path):
     url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
 
+    file_path = 'ori.png'
+    
     headers = {
 
         'X-Chiwawa-API-Token': env['CHIWAWA_API_TOKEN']
@@ -99,8 +101,7 @@ def send_file(companyId, groupId, file_path):
     }
 
 
-    image = open(file_path, 'rb') as f:
-        binary = f.read()
+    image = open(file_path) 
 
     headers = {
 
