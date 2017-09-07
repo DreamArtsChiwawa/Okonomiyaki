@@ -29,16 +29,25 @@ def messages():
 
         state = "default"
 
-        if messageText.find('週報') >= 0 and messageText.find('判断') >= 0:
-            send_message(companyId, groupId, "判断したい週報を入力してください！")
+        if messageText == ("コマンド"):
             state = "no need analyze"
+            command_message = "みしまくんはね、weekly reportや文章を入力すると、ポジティブ度を教えてあげるよ。\n　\
+                                「ポジティブランキング 2017/03」　と打つとその月のポジティブな文章を教えるよ。 \n \
+                                「ネガティブランキング 2017/03」　と打つとその月のネガティブな文章を教えるよ。"
 
-        if messageText.find('<< WEEKLY REPORT >>') >= 0:  # WEEKLY REPORT
+            send_message(companyId, groupId, command_message)
+
+        elif messageText.find('<< WEEKLY REPORT >>') >= 0:  # WEEKLY REPORT
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "WR"
+
         elif messageText.count("。") >= 2:  # WEEKLY REPORTでない長文
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "long message"
+
+        elif messageText.find('週報') >= 0 and messageText.find('判断') >= 0:
+            send_message(companyId, groupId, "判断したい週報を入力してください！")
+            state = "no need analyze"
         else:
             state = "short message"
             if messageText.find("。") >= 0:
@@ -165,8 +174,8 @@ def set_message_WR(analyzed_value):
     message.append("すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
                    "」\nで、" + str(minvalue) + "点でした><\n")
 
-    message.append("ウィークリーレポートの総計は、" + str(totalvalue) + "点でした\n" \
-                                                         "来週もがんばりましょう！！")
+    message.append("ウィークリーレポートの合計は、" + str(totalvalue) + "点でした\n" \
+                    "来週もがんばりましょう！！")
 
     return message
 
