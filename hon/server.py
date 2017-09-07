@@ -73,7 +73,7 @@ def messages():
             month = month.split('/')
             month = month[0] + month[1]
             dic = analyze.open_old_WR(month + ".month")
-            analyze.save_fig(dic['all_socre_list'])
+            analyze.save_fig(dic['all_score_list'])
             state = "no need analyze"
 
 
