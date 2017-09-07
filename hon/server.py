@@ -110,11 +110,11 @@ def send_message(companyId, groupId, message):
 
         'text': message
 
-	'attachments':{
+	#'attachments':{
 		
-		'textType':'md'
+	#	'textType':'md'
 
-	}
+	#}
 
     }
 
