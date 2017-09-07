@@ -116,15 +116,15 @@ def messages():
 
 
         #if state != "message rejected":
-        if state != "short message" and state != "no need analyze":
+        if state != "short message" and state != "no need analyze" :
             send_file(companyId, groupId, "./fig_histgram.png")
             print(state)
             print(messageText.find('\n'),messageText.find('。'))
             print("MESSAGES SENDED")  # logelse:
-            send_message(companyId, groupId,"「" + messageText + "」は受付ませんでした。")
-            print("! MESSAGE REJECTED")
-            state = "message rejected"
-            # print(message)
+            # # send_message(companyId, groupId,"「" + messageText + "」は受付ませんでした。")
+            # print("! MESSAGE REJECTED")
+            # state = "message rejected"
+            # # print(message)
         return "OK"
 
     else:
