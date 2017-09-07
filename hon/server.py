@@ -38,23 +38,41 @@ def messages():
 
 
         if messageText.find('<< WEEKLY REPORT >>') >= 0: # WEEKLY REPORT
-            preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
+            #preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "WR"
         elif messageText.find('\n') >= 1: # WEEKLY REPORTでない長文
-            preprocessed_text = messageText
+
             state = "long message"
         else: # 短文
-            preprocessed_text = messageText
+            #preprocessed_text = messageText
             state = "short message"
+        preprocessed_text = preprocess.preprocess(messageText)
+
+        if state != "no need analyze":
+            value = analyze.analyze(preprocessed_text)
 
         if state == "WR": # WEEKLY REPORTだった場合のメッセージリターン
-            value = analyze.analyze(preprocessed_text)
             #value = dammy() #ダミーの辞書を生成
             return_message = set_message_WR(value) #メッセージを整形
 
             send_message(companyId, groupId, return_message[0]) #メッセージを送信
             send_message(companyId, groupId, return_message[1])
             send_message(companyId, groupId, return_message[2])
+
+        elif state == "longmessage": # WEEKLY REPORTじゃない長文
+            return_message = set_message_WR(value)
+
+            send_message(companyId, groupId, return_message[0]) #メッセージを送信
+            send_message(companyId, groupId, return_message[1])
+            send_message(companyId, groupId, return_message[2])
+
+
+        elif state = "short message":
+            i = 1
+        #else:
+
+
+
 
         send_message(companyId, groupId, "みしまくんは写真を送ることに成功しましたか？")
         send_file(companyId, groupId, "ori.png")
