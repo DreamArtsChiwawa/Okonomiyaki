@@ -262,11 +262,11 @@ def set_message_MAXranking(analyzed_value):
 def set_message_MINranking(analyzed_value):
     messagelist = []
     maxscorelist = []
-    for num, maxscore in enumerate(analyzed_value['mix_score_list']):
+    for num, maxscore in enumerate(analyzed_value['min_score_list']):
         score = str(get_score(maxscore))
         maxscorelist.append(score)
 
-    for num, maxsentense in enumerate(analyzed_value['mix_sentence_list']):
+    for num, maxsentense in enumerate(analyzed_value['min_sentence_list']):
         messagelist.append("「" + maxsentense + "」は、" + maxscorelist[num] + "点でした。")
 
     message = ""
