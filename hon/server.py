@@ -238,7 +238,7 @@ def set_message_MAXranking(analyzed_value):
     for num, maxscore in enumerate(analyzed_value['max_score_list']):
         score = str(get_score(maxscore))
         print(type(score),score)
-        maxscore.append(score)
+        maxscorelist.append(score)
 
     for num, maxsentense in enumerate(analyzed_value['max_sentence_list']):
         message.append("「" + maxsentense + "」は、" + maxscore[num] + "点でした。")
