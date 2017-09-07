@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import sys
 import pickle
 from google.cloud import language
+import pickle
 from datetime import datetime
 
 
@@ -65,7 +66,7 @@ def set_dict(annotations, text_list):
     total_score = score
 
     # print(score_list)
-    
+
     #save_fig(score_list)
 
     # print('total score is {}'.format(sum_score))
@@ -81,7 +82,7 @@ def set_dict(annotations, text_list):
             'mid': {'score': mid_score},
             'magnitude': magnitude,
             'total': total_score,
-            'score_list': score_list 
+            'score_list': score_list
             #'max_list': {'score': ??, 'sentence_list'}
             }
 
@@ -91,11 +92,23 @@ def set_dict(annotations, text_list):
 def save_fig(score_list):
     file_name = "fig_histgram.png"
 
-    n, bins, patch = plt.hist(score_list, bins=np.arange(-1.0, 1.01, 0.1))  # 度数分布表の取得   
+    n, bins, patch = plt.hist(score_list, bins=np.arange(-1.0, 1.01, 0.1))  # 度数分布表の取得
     # plt.savefig("fig_" + datetime.now().strftime("%Y%m%d-%H%M%S") + ".png") # ヒストグラムをファイルに出力
     plt.savefig(file_name)
 
 
+def open_old_WR(info):
+    path = '../pickle/' + info + '.pickle'
+    key = '../pickle' + info +
+    with open(path, 'rb') as pcl
+        result_pickle = pickle.load()
 
+    tmp = result_pickle.keys()
 
+    return tmp
 
+def main():
+    print(open_old_WR('staff'))
+
+if __name__ == '__main__':
+    main()
