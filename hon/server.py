@@ -48,6 +48,15 @@ def messages():
         elif messageText.find('週報') >= 0 and messageText.find('判断') >= 0:
             send_message(companyId, groupId, "判断したい週報を入力してください！")
             state = "no need analyze"
+
+	elif messageText.find('ポジティブランキング') >= 0:
+		day = test.split(",")
+		#dic = dummy('20xxxx.month')
+		dic = analyze.open_old_WR('staff_wr')
+		print(dic)
+ 		state = "max_ranking"
+
+
         else:
             state = "short message"
             if messageText.find("。") >= 0:
