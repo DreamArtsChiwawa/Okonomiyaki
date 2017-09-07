@@ -111,13 +111,7 @@ def send_message(companyId, groupId, message):
 
     content = {
 
-        'text': message
-
-	'attachments': {
-		
-		'textType':'md'
-
-	}
+        'text': message}
 
     }
     requests.post(url, headers=headers, data=json.dumps(content))
@@ -188,7 +182,7 @@ def set_message_LG(analyzed_value):
     message.append("すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
                    "」\nで、" + str(minvalue) + "点でした><\n")
 
-    message.append("合計は、*" + str(totalvalue) + "*点でした\n" \
+    message.append("合計は、" + str(totalvalue) + "点でした\n" \
                    "来週もがんばりましょう！！")
 
     return message
