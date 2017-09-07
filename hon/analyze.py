@@ -12,8 +12,8 @@ def analyze(text):
     print(text)
 
     # review_file = head.get_text(text)
-    review_file = text.replace('¥n', '\n')  # 改行文字の置き換え
-    text_list = review_file.split("\n")  # 改行文字で分かち書き
+    #review_file = text.replace('¥n', '\n')  # 改行文字の置き換え
+    text_list = text.split("\n")  # 改行文字で分かち書き
     # print(review_file)
     # print(text_list)
     # with open(movie_review_filename, 'r') as review_file:
