@@ -34,48 +34,45 @@ def messages():
             state = "no need analyze"
 
         if messageText.find('<< WEEKLY REPORT >>') >= 0:  # WEEKLY REPORT
-            # preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
+            preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "WR"
         elif messageText.find('\n') >= 1:  # WEEKLY REPORTでない長文
+            preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "long message"
         else:  # 短文
-            # preprocessed_text = messageText
+            preprocessed_text = messageText
             state = "short message"
-        preprocessed_text = preprocess.preprocess(messageText)
+
 
         if state != "no need analyze":
             value = analyze.analyze(preprocessed_text)
+        else:
+            if state == "WR":  # WEEKLY REPORTだった場合のメッセージリターン
+                return_message = set_message_WR(value)  # メッセージを整形
 
-        if state == "WR":  # WEEKLY REPORTだった場合のメッセージリターン
-            # value = dammy() #ダミーの辞書を生成
-            return_message = set_message_WR(value)  # メッセージを整形
+                send_message(companyId, groupId, return_message[0])  # メッセージを送信
+                send_message(companyId, groupId, return_message[1])
+                send_message(companyId, groupId, return_message[2])
 
-            send_message(companyId, groupId, return_message[0])  # メッセージを送信
-            send_message(companyId, groupId, return_message[1])
-            send_message(companyId, groupId, return_message[2])
+            elif state == "long message":  # WEEKLY REPORTじゃない長文
+                return_message = set_message_LG(value)
 
-        elif state == "longmessage":  # WEEKLY REPORTじゃない長文
-            return_message = set_message_WR(value)
+                send_message(companyId, groupId, return_message[0])  # メッセージを送信
+                send_message(companyId, groupId, return_message[1])
+                send_message(companyId, groupId, return_message[2])
 
-            send_message(companyId, groupId, return_message[0])  # メッセージを送信
-            send_message(companyId, groupId, return_message[1])
-            send_message(companyId, groupId, return_message[2])
+            elif state == "short message":
+                return_message = set_message_SH(value)
 
+                send_message(companyId, groupId, return_message[0])
+            else:
+                send_message(companyId, groupId,"「" + messageText + "」は受付ませんでした。")
+                print("! MESSAGE REJECTED")
 
-        elif state == "short message":
-            i = 1
-
-        # else:
-        return_message = set_message_WR(value)
-
-        send_message(companyId, groupId, return_message[0])  # メッセージを送信
-        send_message(companyId, groupId, return_message[1])
-        send_message(companyId, groupId, return_message[2])
-
-        # send_message(companyId, groupId, "みしまくんは写真を送ることに成功しましたか？")
-        send_file(companyId, groupId, "../test/fig_histgram.png")
-        print(set_message_WR(value))
-        print("MESSEAGES SENDED")  # log
+        send_message(companyId, groupId, "0点が一番ネガティブ、100点が一番ポジティブ！")
+        if state = "short message":
+            send_file(companyId, groupId, "../test/fig_histgram.png")
+        print("MESSAGES SENDED")  # log
 
         return "OK"
 
@@ -164,18 +161,42 @@ def set_message_WR(analyzed_value):
     message.append("ウィークリーレポートの総計は、" + str(totalvalue) + "点でした\n" \
                                                          "来週もがんばりましょう！！")
 
-    """
-    message = 'RESULT' + \
-              '\nMAX = ' + str(analyzed_value['max']['score']) + \
-              '\nMIN = ' + str(analyzed_value['min']['score']) + \
-              '\nMID = ' + str(analyzed_value['mid']['score']) + \
-              '\nMAGNITUDE = ' + str(analyzed_value['magnitude']) + \
-              '\nTOTAL = ' + str(analyzed_value['total'])
-    """
+    return message
+
+def set_message_LG(analyzed_value):
+    maxvalue = get_score(analyzed_value['max']['score'])
+    minvalue = get_score(analyzed_value['min']['score'])
+    totalvalue = get_score(analyzed_value['total'])
+
+    message = []
+    message.append("とってもポジティブな文章は、\n「" + analyzed_value['max']['sentence'] + \
+                   "」\nで、" + str(maxvalue) + "点でした！\n")
+
+    message.append("すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
+                   "」\nで、" + str(minvalue) + "点でした><\n")
+
+    message.append("合計は、" + str(totalvalue) + "点でした\n" \
+                   "来週もがんばりましょう！！")
+
+    return message
+
+def set_message_SH(analyzed_value):
+    totalvalue = get_score(analyzed_value['total'])
+
+    message = []
+    message.append("あなたが送った文章は、" + str(totalvalue) + "点でした！\n")
+
     return message
 
 
 """
+message = 'RESULT' + \
+'\nMAX = ' + str(analyzed_value['max']['score']) + \
+'\nMIN = ' + str(analyzed_value['min']['score']) + \
+'\nMID = ' + str(analyzed_value['mid']['score']) + \
+'\nMAGNITUDE = ' + str(analyzed_value['magnitude']) + \
+'\nTOTAL = ' + str(analyzed_value['total'])
+
 def dammy():
     dic = {'max': {'score': 0.8, 'sentense':"あｆｐふぁｗｋぱ"},
            'min': {'score': -0.4,'sentense':"うぃふぉあえふぉうぇ"},
