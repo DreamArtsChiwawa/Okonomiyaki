@@ -46,7 +46,7 @@ def messages():
 
         if state != "no need analyze":
             analyzed_message = analyze.analyze(preprocessed_text)
-        else:
+            
             if state == "WR":  # WEEKLY REPORTだった場合のメッセージリターン
                 return_message = set_message_WR(analyzed_message)  # メッセージを整形
 
@@ -65,17 +65,19 @@ def messages():
                 return_message = set_message_SH(analyzed_message)
 
                 send_message(companyId, groupId, return_message[0])
+                
             else:
                 send_message(companyId, groupId,"「" + messageText + "」は受付ませんでした。")
                 print("! MESSAGE REJECTED")
                 state = "message rejected"
-                
+        
+            
         if state != "message rejected":
             send_message(companyId, groupId, "0点が一番ネガティブ、100点が一番ポジティブ！")
-        if state == "short message":
+        if state != "short message":
             send_file(companyId, groupId, "../test/fig_histgram.png")
         print("MESSAGES SENDED")  # log
-
+        print(state)
         return "OK"
 
     else:
@@ -164,6 +166,7 @@ def set_message_WR(analyzed_value):
                                                          "来週もがんばりましょう！！")
 
     return message
+
 
 def set_message_LG(analyzed_value):
     maxvalue = get_score(analyzed_value['max']['score'])
