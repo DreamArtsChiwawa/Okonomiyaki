@@ -41,9 +41,14 @@ def set_dict(annotations, text_list):
 
     for index, sentence in enumerate(annotations.sentences):
         sentence_sentiment = sentence.sentiment.score
-        print('Sentence {} has a sentiment score of {}.The sentence is "{}"\n'.format(
-            index, sentence_sentiment, text_list[index]))
-        score_list.append(sentence_sentiment)
+        try:
+            print('Sentence {} has a sentiment score of {}.The sentence is "{}"\n'.format(
+                index, sentence_sentiment, text_list[index]))
+            score_list.append(sentence_sentiment)
+        except:
+            print(score_list)
+            
+
 
     print('Overall Sentiment: score of {} with magnitude of {}'.format(
         score, magnitude))

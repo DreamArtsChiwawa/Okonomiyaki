@@ -45,11 +45,11 @@ def main():
     with open('hoge.pickle', 'wb') as pcl:
         pickle.dump(value_list, pcl)  # リストをpickleへ保存
 
-    with open('hoge.pickle', 'rb') as pcl:
-        result_pickle = pickle.load(pcl)  # pickleの読込み
-        print("\n----------------------------- ↓ pickle ↓ -----------------------------\n\n" + \
-              str(result_pickle) + \
-              "\n\n----------------------------- ↑ pickle ↑ -----------------------------")
+    # with open('hoge.pickle', 'rb') as pcl:
+    #     result_pickle = pickle.load(pcl)  # pickleの読込み
+    #     print("\n----------------------------- ↓ pickle ↓ -----------------------------\n\n" + \
+    #           str(result_pickle) + \
+    #           "\n\n----------------------------- ↑ pickle ↑ -----------------------------")
 
 
 if __name__ == '__main__':
