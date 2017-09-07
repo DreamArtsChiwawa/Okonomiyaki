@@ -127,12 +127,12 @@ def send_file(companyId, groupId, file_path):
 
     }
 
-    file_name = os.path.basename(faile_path)
+    file_name = os.path.basename(file_path)
 
     image = open(file_path,"rb")
 
     files = {
-
+i
         'file': (file_name,image,'image/png')
 
     }
