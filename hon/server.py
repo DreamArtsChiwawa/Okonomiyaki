@@ -48,8 +48,8 @@ def messages():
             send_message(companyId, groupId, return_message2)
             send_message(companyId, groupId, return_message3)
 
-        send_file(companyId, groupId, "ori.png")
         send_message(companyId, groupId, "みしまくんは写真を送ることに成功しましたか？")
+        send_file(companyId, groupId, "ori.png")
         print("MESSEAGES SENDED") #log
 
         return "OK"
