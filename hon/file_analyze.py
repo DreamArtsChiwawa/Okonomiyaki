@@ -19,7 +19,10 @@ def WR_analyze(WR_list, value_list):
                 continue
         #print(raw_text)
         preprocessed_text = preprocess.preprocess(raw_text)
-        analyze_dict = (analyze.analyze(preprocessed_text))
+        try:
+            analyze_dict = (analyze.analyze(preprocessed_text))
+        except:
+            continue
         value_list.append(analyze_dict)
 
         week_dic[WR_name] = analyze_dict
