@@ -69,8 +69,13 @@ def messages():
 
         elif state == "short message":
             i = 1
-        #else:
 
+        #else:
+        return_message = set_message_WR(value)
+
+        send_message(companyId, groupId, return_message[0]) #メッセージを送信
+        send_message(companyId, groupId, return_message[1])
+        send_message(companyId, groupId, return_message[2])
 
 
 
