@@ -112,11 +112,17 @@ def send_message(companyId, groupId, message):
 
         'text': message
 
+<<<<<<< HEAD
 	'attachments':{
 
 		'textType':'md'
+=======
+	#'attachments':{
+		
+	#	'textType':'md'
+>>>>>>> dd4ca09eb00aee619b81c99f1e8588aafe779bb0
 
-	}
+	#}
 
     }
 
