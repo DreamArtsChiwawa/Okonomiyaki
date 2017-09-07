@@ -123,7 +123,7 @@ def messages():
             send_message(companyId, groupId,"「" + messageText + "」は受付ませんでした。")
             print("! MESSAGE REJECTED")
             state = "message rejected"
-    print(message)
+            print(message)
         return "OK"
 
     else:
