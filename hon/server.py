@@ -80,6 +80,7 @@ def messages():
         if state != "short message":
             send_file(companyId, groupId, "./fig_histgram.png")
         print(state)
+        print(messageText.find('\n'),messageText.find('。'))
         print("MESSAGES SENDED")  # log
         return "OK"
 
