@@ -28,11 +28,11 @@ def messages():
         messageText = msgObj['text']
         userName = msgObj['createdUserName']
 
-        flag = 0
+        state = "default"
 
         if messageText.find('週報') >= 0 and messageText.find('判断') >= 0:
             send_message(companyId, groupId,"判断したい週報を入力してください！")
-            flag = 1
+            state = "no need analyze"
 
         if messageText.find('<< WEEKLY REPORT >>') >= 0:
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
@@ -48,7 +48,7 @@ def messages():
             send_message(companyId, groupId, return_message2)
             send_message(companyId, groupId, return_message3)
 
-        send_message(./ori.png)
+        send_message(ori.png)
         print("MESSEAGES SENDED") #log
 
         return "OK"
