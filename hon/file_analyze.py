@@ -22,6 +22,8 @@ def main():
     #WR_list = glob.glob('../staff_wr_sample/*.utf')  # 拡張子がutfのファイル(WR)のファイル名をリスト形式で取得
     WR_list = glob.glob(sys.argv[1])  # 拡張子がutfのファイル(WR)のファイル名をリスト形式で取得
 
+    print(WR_list)
+
     value_list = []
 
     value_list = WR_analyze(WR_list, value_list)  # 全てのWRを解析
