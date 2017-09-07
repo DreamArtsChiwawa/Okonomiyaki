@@ -239,17 +239,24 @@ def set_message_SH(analyzed_value):
     return message
 
 def set_message_MAXranking(analyzed_value):
-    message = []
+    messagelist = []
     maxscorelist = []
     for num, maxscore in enumerate(analyzed_value['max_score_list']):
         score = str(get_score(maxscore))
         maxscorelist.append(score)
 
     for num, maxsentense in enumerate(analyzed_value['max_sentence_list']):
-        message.append("「" + maxsentense + "」は、" + maxscorelist[num] + "点でした。")
+        messagelist.append("「" + maxsentense + "」は、" + maxscorelist[num] + "点でした。")
 
+    message = ""
+    i = 0
+    for line in messagelist:
+        text += line + "\n"
+        if i > 5:
+            break
+        i += 1
 
-    return preprocess.list2text(message)
+    return message
 
 """
 message = 'RESULT' + \
