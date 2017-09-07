@@ -56,7 +56,7 @@ def set_dict(annotations, text_list):
     #     score, magnitude))
 
     sum_score = sum(score_list)
-    if(len(score_list) != 0):
+    if len(score_list) != 0:
         ave_score = sum_score / len(score_list)
     else:
         ave_score = 0
@@ -101,11 +101,24 @@ def open_old_WR(info):
     path = '../pickle/' + info + '.pickle'
     key = '../pickle' + info
     with open(path, 'rb') as pcl:
-        result_pickle = pickle.load()
+        result_pickle = pickle.load(pcl)
 
-    tmp = result_pickle.keys()
+    filename_list = result_pickle.keys()
 
-    return tmp
+    max_score_list = []
+    max_sentence_list = []
+
+    for fname in filename_list:
+        mscore = result_pickle[fname]['max']['score']
+        if mscore >= 0.8:
+            max_score_list.append(mscore)
+            max_sentence_list.append(result_pickle[fname]['max']['sentence'])
+
+    dic = {'max_score_list': max_score_list,
+           'max_sentence_list': max_sentence_list
+           }
+
+    return dic
 
 
 def main():
