@@ -24,7 +24,7 @@ def WR_analyze(WR_list):
         try:
             analyze_dict = (analyze.analyze(preprocessed_text))
         except:
-            print("DICTIONARY ERROR")
+            print("DICTIONARY ERROR", preprocessed_text)
             continue
 
         week_dic[WR_name] = analyze_dict
