@@ -93,11 +93,8 @@ def send_file(companyId, groupId, file_path):
 
     url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
 
-<<<<<<< HEAD
-=======
     file_path = 'ori.png'
 
->>>>>>> bf45c7c06c8683165d6c6516b4119ecd9dda2415
     headers = {
 
         'X-Chiwawa-API-Token': env['CHIWAWA_API_TOKEN']
