@@ -31,9 +31,9 @@ def messages():
 
         if messageText == ("コマンド"):
             state = "no need analyze"
-            command_message = "みしまくんはね、weekly reportや文章を入力すると、ポジティブ度を教えてあげるよ。\n　\
-                                「ポジティブランキング 2017/03」　と打つとその月のポジティブな文章を教えるよ。 \n \
-                                「ネガティブランキング 2017/03」　と打つとその月のネガティブな文章を教えるよ。"
+            command_message = "みしまくんはね、weekly reportや文章を入力すると、ポジティブ度を教えてあげるよ。\n" \
+                                + "「ポジティブランキング 2017/03」　と打つとその月のポジティブな文章を教えるよ。 \n" \
+                                + "「ネガティブランキング 2017/03」　と打つとその月のネガティブな文章を教えるよ。"
 
             send_message(companyId, groupId, command_message)
 
@@ -86,7 +86,7 @@ def messages():
 
 
         #if state != "message rejected":
-        if state != "short message":
+        if state != "short message" and state != "no need analyze":
             send_file(companyId, groupId, "./fig_histgram.png")
         print(state)
         print(messageText.find('\n'),messageText.find('。'))
