@@ -40,7 +40,7 @@ def messages():
         else:
             preprocessed_text = messageText
 
-        if state == "default":
+        if state == "none":
             value = analyze.analyze(preprocessed_text)
             #value = dammy() #ダミーの辞書を生成
             return_message = set_message_WR(value) #メッセージを整形
