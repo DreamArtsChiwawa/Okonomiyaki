@@ -34,13 +34,20 @@ def messages():
             send_message(companyId, groupId,"判断したい週報を入力してください！")
             state = "no need analyze"
 
-        if messageText.find('<< WEEKLY REPORT >>') >= 0:
+
+
+
+        if messageText.find('<< WEEKLY REPORT >>') >= 0: # WEEKLY REPORT
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
             state = "WR"
-        else:
+        elif messagesText.find('\n') >= 1:　# WEEKLY REPORTでない長文
             preprocessed_text = messageText
+            state = "long message"
+        else: # 短文
+            preprocessed_text = messageText
+            state = "short message"
 
-        if state == "none":
+        if state == "WR": # WEEKLY REPORTだった場合のメッセージリターン
             value = analyze.analyze(preprocessed_text)
             #value = dammy() #ダミーの辞書を生成
             return_message = set_message_WR(value) #メッセージを整形
