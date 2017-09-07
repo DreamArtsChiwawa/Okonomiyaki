@@ -48,6 +48,8 @@ def set_dict(annotations, text_list):
     print('Overall Sentiment: score of {} with magnitude of {}'.format(
         score, magnitude))
 
+    print(score_list)
+
     sum_score = sum(score_list)
     ave_score = sum_score / len(score_list)
     max_score = max(score_list)
