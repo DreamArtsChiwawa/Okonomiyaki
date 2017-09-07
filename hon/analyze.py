@@ -56,7 +56,7 @@ def set_dict(annotations, text_list):
     #     score, magnitude))
 
     sum_score = sum(score_list)
-    if(len(score_list) != 0):
+    if len(score_list) != 0:
         ave_score = sum_score / len(score_list)
     else:
         ave_score = 0
@@ -109,10 +109,16 @@ def open_old_WR(info):
     max_sentence_list = []
 
     for fname in filename_list:
-        max_score_list.append(result_pickle[fname]['max']['score'])
-        max_sentence_list.append(result_pickle[fname]['max']['sentence'])
+        mscore = result_pickle[fname]['max']['score']
+        if mscore >= 0.8:
+            max_score_list.append(mscore)
+            max_sentence_list.append(result_pickle[fname]['max']['sentence'])
 
-    return max_score_list
+    dic = {'max_score_list': max_score_list,
+           'max_sentence_list': max_sentence_list
+           }
+
+    return dic
 
 
 def main():
