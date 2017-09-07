@@ -45,31 +45,33 @@ def messages():
 
 
         if state != "no need analyze":
-            value = analyze.analyze(preprocessed_text)
+            analyzed_message = analyze.analyze(preprocessed_text)
         else:
             if state == "WR":  # WEEKLY REPORTだった場合のメッセージリターン
-                return_message = set_message_WR(value)  # メッセージを整形
+                return_message = set_message_WR(analyzed_message)  # メッセージを整形
 
                 send_message(companyId, groupId, return_message[0])  # メッセージを送信
                 send_message(companyId, groupId, return_message[1])
                 send_message(companyId, groupId, return_message[2])
 
             elif state == "long message":  # WEEKLY REPORTじゃない長文
-                return_message = set_message_LG(value)
+                return_message = set_message_LG(analyzed_message)
 
                 send_message(companyId, groupId, return_message[0])  # メッセージを送信
                 send_message(companyId, groupId, return_message[1])
                 send_message(companyId, groupId, return_message[2])
 
             elif state == "short message":
-                return_message = set_message_SH(value)
+                return_message = set_message_SH(analyzed_message)
 
                 send_message(companyId, groupId, return_message[0])
             else:
                 send_message(companyId, groupId,"「" + messageText + "」は受付ませんでした。")
                 print("! MESSAGE REJECTED")
-
-        send_message(companyId, groupId, "0点が一番ネガティブ、100点が一番ポジティブ！")
+                state = "message rejected"
+                
+        if state != "message rejected":
+            send_message(companyId, groupId, "0点が一番ネガティブ、100点が一番ポジティブ！")
         if state == "short message":
             send_file(companyId, groupId, "../test/fig_histgram.png")
         print("MESSAGES SENDED")  # log
