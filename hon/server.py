@@ -132,8 +132,8 @@ def send_file(companyId, groupId, file_path):
     image = open(file_path,"rb")
 
     files = {
-i
-        'file': (file_name,image,'image/png')
+
+        'file':(file_name,image,'image/png')
 
     }
 
