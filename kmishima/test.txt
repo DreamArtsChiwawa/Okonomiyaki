@@ -1,0 +1,599 @@
+gihesrghepwuh
+Sentence 0 has a sentiment score of 0.The sentence is "gihesrghepwuh"
+
+Overall Sentiment: score of 0 with magnitude of 0
+[0]
+d
+Sentence 0 has a sentiment score of 0.1.The sentence is "d"
+
+Overall Sentiment: score of 0.1 with magnitude of 0.1
+[0.1]
+a
+Sentence 0 has a sentiment score of 0.The sentence is "a"
+
+Overall Sentiment: score of 0 with magnitude of 0
+[0]
+a
+Sentence 0 has a sentiment score of 0.The sentence is "a"
+
+Overall Sentiment: score of 0 with magnitude of 0
+[0]
+havhibvh
+Sentence 0 has a sentiment score of 0.The sentence is "havhibvh"
+
+Overall Sentiment: score of 0 with magnitude of 0
+[0]
+Date: Fri, 30 Sep 2016 19:28:49 +0900
+From:山下拓郎<ta_yamashita@dreamarts.co.jp>
+Subject: [PD_WR] WR_20160930_Sm@rtDBグループ_山下拓郎
+Message-Id: <1475231329.2149905.1@moe.dreamarts.co.jp>
+
+<< WEEKLY REPORT >>
+2016年09月30日Sm@rtDBグループ山下拓郎
+
+■労働時間
+ 16年07月: 181時間10分
+ 16年08月: 187時間10分
+ 16年09月: 178時間51分(直近3ヶ月計:547時間11分)
+
+
+■総括
+・3.6.0Todo
+ite1の残Todoに取り組んだ。ite1の分は消化できたが、
+ite2のTodoにほぼ着手できていない。
+問い合わせから不具合修正のTodoも追加されており、Todo消化に力を注がなくてはならない。
+
+・問い合わせ対応
+先週から引き続き1件。新規4件。
+クローズ1件。質問者確認待ち2件。手持ち2件。
+ワークフローのイベントハンドラのサンプル提供はオーバーサービス気味だったので、
+今後の対応では気を付けたい。
+
+・新人ブログ
+記事作成してレビュー待ち。
+
+
+■課題・問題・トラブル⇒Request
+
+
+■Highlight
+・3.6.0Todo
+[ite1:9/129/25]
+ -文書一覧のタイトルを非表示としたい(必達)
+ ⇒マージ済み
+ -バインダ参照ボタン_必須項目ON/OFFで配置が異なる(チャレンジA)
+ ⇒修正してプルリク作成。マージ待ち。
+
+ [ite2:9/2610/9]
+ -ソート順を変更したときにページを1ページ目に戻してほしい(必達)
+ ⇒調査着手
+
+ -ドラッグ&ドロップエリアを常時表示しておけるオプションが欲しい(必達)
+ -【バインダ参照ボタン】プルダウン形式で、閲覧画面ではリンクのあり・なしを設定で出来るようにしたい(チャレンジA)
+ -【アドオンサンプルプログラム説明書】csvOutputData記述ミス(チャレンジA)
+ ⇒未着手
+
+
+・3.5.2Todo
+ -Sm@rtDB3.5でのformatDateの挙動(必達)
+ ⇒問い合わせ起点。未着手。すぐ終わる見込み。
+
+
+・問い合わせ対応
+ -アクティビティ担当者へのメール通知について2
+ -hibiki.logにて、1秒間に1回「luxor.BatchDeleteExecutor」が出力され続ける③
+ ⇒質問者確認待ち。
+
+ -Sm@rtDB3.5でのformatDateの挙動
+ ⇒クローズ
+
+ -航空会社様:Sm@rtDBリビジョンアップ後、新しいhibikiエラーが出力される(Expression analysis fails)
+ -承認等実施時に[作業完了報告]というダイアログが出力される(SDB Chrome)
+ ⇒調査中
+
+
+■Other Activity
+・LT会
+・ウェルカムメッセージ
+・PD&DKC勉強会
+
+
+■AR
+・Todo消化
+・問い合わせ消化
+・ウェルカムメッセージ練習
+
+
+■次週の指針、メッセージ
+・生活リズムが崩れてきているので、これを整えて高いパフォーマンスを維持できるよう努力する。
+・イスに座っている時間が長いので、腰痛にならないように工夫する。
+・応用情報の勉強をする。
+
+
+
+Sm@rtDBグループ
+山下拓郎
+ta_yamashita@dreamarts.co.jp
+Sentence 0 has a sentiment score of 0.The sentence is "Date: Fri, 30 Sep 2016 19:28:49 +0900"
+
+Sentence 1 has a sentiment score of 0.2.The sentence is "From:山下拓郎<ta_yamashita@dreamarts.co.jp>"
+
+Sentence 2 has a sentiment score of -0.2.The sentence is "Subject: [PD_WR] WR_20160930_Sm@rtDBグループ_山下拓郎"
+
+Sentence 3 has a sentiment score of 0.5.The sentence is "Message-Id: <1475231329.2149905.1@moe.dreamarts.co.jp>"
+
+Sentence 4 has a sentiment score of -0.3.The sentence is ""
+
+Sentence 5 has a sentiment score of -0.3.The sentence is "<< WEEKLY REPORT >>"
+
+Sentence 6 has a sentiment score of -0.1.The sentence is "2016年09月30日Sm@rtDBグループ山下拓郎"
+
+Sentence 7 has a sentiment score of 0.2.The sentence is ""
+
+Sentence 8 has a sentiment score of 0.1.The sentence is "■労働時間"
+
+Sentence 9 has a sentiment score of -0.1.The sentence is " 16年07月: 181時間10分"
+
+Sentence 10 has a sentiment score of 0.The sentence is " 16年08月: 187時間10分"
+
+Sentence 11 has a sentiment score of 0.1.The sentence is " 16年09月: 178時間51分(直近3ヶ月計:547時間11分)"
+
+Sentence 12 has a sentiment score of 0.The sentence is ""
+
+Sentence 13 has a sentiment score of 0.The sentence is ""
+
+Sentence 14 has a sentiment score of -0.6.The sentence is "■総括"
+
+Sentence 15 has a sentiment score of -0.5.The sentence is "・3.6.0Todo"
+
+Sentence 16 has a sentiment score of -0.7.The sentence is "ite1の残Todoに取り組んだ。ite1の分は消化できたが、"
+
+Sentence 17 has a sentiment score of -0.1.The sentence is "ite2のTodoにほぼ着手できていない。"
+
+Sentence 18 has a sentiment score of 0.The sentence is "問い合わせから不具合修正のTodoも追加されており、Todo消化に力を注がなくてはならない。"
+
+Sentence 19 has a sentiment score of 0.The sentence is ""
+
+Sentence 20 has a sentiment score of 0.The sentence is "・問い合わせ対応"
+
+Sentence 21 has a sentiment score of 0.The sentence is "先週から引き続き1件。新規4件。"
+
+Sentence 22 has a sentiment score of -0.3.The sentence is "クローズ1件。質問者確認待ち2件。手持ち2件。"
+
+Sentence 23 has a sentiment score of 0.The sentence is "ワークフローのイベントハンドラのサンプル提供はオーバーサービス気味だったので、"
+
+Sentence 24 has a sentiment score of 0.1.The sentence is "今後の対応では気を付けたい。"
+
+Sentence 25 has a sentiment score of -0.5.The sentence is ""
+
+Sentence 26 has a sentiment score of 0.The sentence is "・新人ブログ"
+
+Sentence 27 has a sentiment score of 0.The sentence is "記事作成してレビュー待ち。"
+
+Sentence 28 has a sentiment score of 0.1.The sentence is ""
+
+Sentence 29 has a sentiment score of 0.2.The sentence is ""
+
+Sentence 30 has a sentiment score of -0.4.The sentence is "■課題・問題・トラブル⇒Request"
+
+Sentence 31 has a sentiment score of 0.1.The sentence is ""
+
+Sentence 32 has a sentiment score of -0.4.The sentence is ""
+
+Sentence 33 has a sentiment score of -0.4.The sentence is "■Highlight"
+
+Sentence 34 has a sentiment score of 0.The sentence is "・3.6.0Todo"
+
+Sentence 35 has a sentiment score of 0.2.The sentence is "[ite1:9/129/25]"
+
+Sentence 36 has a sentiment score of -0.6.The sentence is " -文書一覧のタイトルを非表示としたい(必達)"
+
+Sentence 37 has a sentiment score of 0.2.The sentence is " ⇒マージ済み"
+
+Sentence 38 has a sentiment score of 0.5.The sentence is " -バインダ参照ボタン_必須項目ON/OFFで配置が異なる(チャレンジA)"
+
+Sentence 39 has a sentiment score of 0.2.The sentence is " ⇒修正してプルリク作成。マージ待ち。"
+
+Sentence 40 has a sentiment score of -0.2.The sentence is ""
+
+Sentence 41 has a sentiment score of -0.1.The sentence is " [ite2:9/2610/9]"
+
+Sentence 42 has a sentiment score of 0.1.The sentence is " -ソート順を変更したときにページを1ページ目に戻してほしい(必達)"
+
+Sentence 43 has a sentiment score of 0.The sentence is " ⇒調査着手"
+
+Sentence 44 has a sentiment score of -0.1.The sentence is ""
+
+Sentence 45 has a sentiment score of -0.1.The sentence is " -ドラッグ&ドロップエリアを常時表示しておけるオプションが欲しい(必達)"
+
+Sentence 46 has a sentiment score of -0.3.The sentence is " -【バインダ参照ボタン】プルダウン形式で、閲覧画面ではリンクのあり・なしを設定で出来るようにしたい(チャレンジA)"
+
+Sentence 47 has a sentiment score of -0.7.The sentence is " -【アドオンサンプルプログラム説明書】csvOutputData記述ミス(チャレンジA)"
+
+Sentence 48 has a sentiment score of -0.9.The sentence is " ⇒未着手"
+
+Sentence 49 has a sentiment score of 0.1.The sentence is ""
+
+Sentence 50 has a sentiment score of -0.1.The sentence is ""
+
+Sentence 51 has a sentiment score of 0.The sentence is "・3.5.2Todo"
+
+Sentence 52 has a sentiment score of 0.1.The sentence is " -Sm@rtDB3.5でのformatDateの挙動(必達)"
+
+Sentence 53 has a sentiment score of -0.4.The sentence is " ⇒問い合わせ起点。未着手。すぐ終わる見込み。"
+
+Sentence 54 has a sentiment score of 0.The sentence is ""
+
+Sentence 55 has a sentiment score of 0.The sentence is ""
+
+Sentence 56 has a sentiment score of 0.1.The sentence is "・問い合わせ対応"
+
+Sentence 57 has a sentiment score of 0.1.The sentence is " -アクティビティ担当者へのメール通知について2"
+
+Sentence 58 has a sentiment score of 0.1.The sentence is " -hibiki.logにて、1秒間に1回「luxor.BatchDeleteExecutor」が出力され続ける③"
+
+Sentence 59 has a sentiment score of 0.7.The sentence is " ⇒質問者確認待ち。"
+
+Sentence 60 has a sentiment score of 0.The sentence is ""
+
+Sentence 61 has a sentiment score of 0.The sentence is " -Sm@rtDB3.5でのformatDateの挙動"
+
+Sentence 62 has a sentiment score of -0.3.The sentence is " ⇒クローズ"
+
+Sentence 63 has a sentiment score of 0.7.The sentence is ""
+
+Sentence 64 has a sentiment score of 0.1.The sentence is " -航空会社様:Sm@rtDBリビジョンアップ後、新しいhibikiエラーが出力される(Expression analysis fails)"
+
+Sentence 65 has a sentiment score of 0.5.The sentence is " -承認等実施時に[作業完了報告]というダイアログが出力される(SDB Chrome)"
+
+Sentence 66 has a sentiment score of 0.1.The sentence is " ⇒調査中"
+
+Sentence 67 has a sentiment score of 0.7.The sentence is ""
+
+Sentence 68 has a sentiment score of 0.The sentence is ""
+
+Sentence 69 has a sentiment score of 0.1.The sentence is "■Other Activity"
+
+Sentence 70 has a sentiment score of 0.1.The sentence is "・LT会"
+
+Overall Sentiment: score of 0 with magnitude of 18.3
+[0, 0.2, -0.2, 0.5, -0.3, -0.3, -0.1, 0.2, 0.1, -0.1, 0, 0.1, 0, 0, -0.6, -0.5, -0.7, -0.1, 0, 0, 0, 0, -0.3, 0, 0.1, -0.5, 0, 0, 0.1, 0.2, -0.4, 0.1, -0.4, -0.4, 0, 0.2, -0.6, 0.2, 0.5, 0.2, -0.2, -0.1, 0.1, 0, -0.1, -0.1, -0.3, -0.7, -0.9, 0.1, -0.1, 0, 0.1, -0.4, 0, 0, 0.1, 0.1, 0.1, 0.7, 0, 0, -0.3, 0.7, 0.1, 0.5, 0.1, 0.7, 0, 0.1, 0.1]
+Date: Fri, 30 Sep 2016 19:28:49 +0900
+From:山下拓郎<ta_yamashita@dreamarts.co.jp>
+Subject: [PD_WR] WR_20160930_Sm@rtDBグループ_山下拓郎
+Message-Id: <1475231329.2149905.1@moe.dreamarts.co.jp>
+
+<< WEEKLY REPORT >>
+2016年09月30日Sm@rtDBグループ山下拓郎
+
+■労働時間
+ 16年07月: 181時間10分
+ 16年08月: 187時間10分
+ 16年09月: 178時間51分(直近3ヶ月計:547時間11分)
+
+
+■総括
+・3.6.0Todo
+ite1の残Todoに取り組んだ。ite1の分は消化できたが、
+ite2のTodoにほぼ着手できていない。
+問い合わせから不具合修正のTodoも追加されており、Todo消化に力を注がなくてはならない。
+
+・問い合わせ対応
+先週から引き続き1件。新規4件。
+クローズ1件。質問者確認待ち2件。手持ち2件。
+ワークフローのイベントハンドラのサンプル提供はオーバーサービス気味だったので、
+今後の対応では気を付けたい。
+
+・新人ブログ
+記事作成してレビュー待ち。
+
+
+■課題・問題・トラブル⇒Request
+
+
+■Highlight
+・3.6.0Todo
+[ite1:9/129/25]
+ -文書一覧のタイトルを非表示としたい(必達)
+ ⇒マージ済み
+ -バインダ参照ボタン_必須項目ON/OFFで配置が異なる(チャレンジA)
+ ⇒修正してプルリク作成。マージ待ち。
+
+ [ite2:9/2610/9]
+ -ソート順を変更したときにページを1ページ目に戻してほしい(必達)
+ ⇒調査着手
+
+ -ドラッグ&ドロップエリアを常時表示しておけるオプションが欲しい(必達)
+ -【バインダ参照ボタン】プルダウン形式で、閲覧画面ではリンクのあり・なしを設定で出来るようにしたい(チャレンジA)
+ -【アドオンサンプルプログラム説明書】csvOutputData記述ミス(チャレンジA)
+ ⇒未着手
+
+
+・3.5.2Todo
+ -Sm@rtDB3.5でのformatDateの挙動(必達)
+ ⇒問い合わせ起点。未着手。すぐ終わる見込み。
+
+
+・問い合わせ対応
+ -アクティビティ担当者へのメール通知について2
+ -hibiki.logにて、1秒間に1回「luxor.BatchDeleteExecutor」が出力され続ける③
+ ⇒質問者確認待ち。
+
+ -Sm@rtDB3.5でのformatDateの挙動
+ ⇒クローズ
+
+ -航空会社様:Sm@rtDBリビジョンアップ後、新しいhibikiエラーが出力される(Expression analysis fails)
+ -承認等実施時に[作業完了報告]というダイアログが出力される(SDB Chrome)
+ ⇒調査中
+
+
+■Other Activity
+・LT会
+・ウェルカムメッセージ
+・PD&DKC勉強会
+
+
+■AR
+・Todo消化
+・問い合わせ消化
+・ウェルカムメッセージ練習
+
+
+■次週の指針、メッセージ
+・生活リズムが崩れてきているので、これを整えて高いパフォーマンスを維持できるよう努力する。
+・イスに座っている時間が長いので、腰痛にならないように工夫する。
+・応用情報の勉強をする。
+
+
+
+Sm@rtDBグループ
+山下拓郎
+ta_yamashita@dreamarts.co.jp
+Sentence 0 has a sentiment score of 0.The sentence is "Date: Fri, 30 Sep 2016 19:28:49 +0900"
+
+Sentence 1 has a sentiment score of 0.2.The sentence is "From:山下拓郎<ta_yamashita@dreamarts.co.jp>"
+
+Sentence 2 has a sentiment score of -0.2.The sentence is "Subject: [PD_WR] WR_20160930_Sm@rtDBグループ_山下拓郎"
+
+Sentence 3 has a sentiment score of 0.5.The sentence is "Message-Id: <1475231329.2149905.1@moe.dreamarts.co.jp>"
+
+Sentence 4 has a sentiment score of -0.3.The sentence is ""
+
+Sentence 5 has a sentiment score of -0.3.The sentence is "<< WEEKLY REPORT >>"
+
+Sentence 6 has a sentiment score of -0.1.The sentence is "2016年09月30日Sm@rtDBグループ山下拓郎"
+
+Sentence 7 has a sentiment score of 0.2.The sentence is ""
+
+Sentence 8 has a sentiment score of 0.1.The sentence is "■労働時間"
+
+Sentence 9 has a sentiment score of -0.1.The sentence is " 16年07月: 181時間10分"
+
+Sentence 10 has a sentiment score of 0.The sentence is " 16年08月: 187時間10分"
+
+Sentence 11 has a sentiment score of 0.1.The sentence is " 16年09月: 178時間51分(直近3ヶ月計:547時間11分)"
+
+Sentence 12 has a sentiment score of 0.The sentence is ""
+
+Sentence 13 has a sentiment score of 0.The sentence is ""
+
+Sentence 14 has a sentiment score of -0.6.The sentence is "■総括"
+
+Sentence 15 has a sentiment score of -0.5.The sentence is "・3.6.0Todo"
+
+Sentence 16 has a sentiment score of -0.7.The sentence is "ite1の残Todoに取り組んだ。ite1の分は消化できたが、"
+
+Sentence 17 has a sentiment score of -0.1.The sentence is "ite2のTodoにほぼ着手できていない。"
+
+Sentence 18 has a sentiment score of 0.The sentence is "問い合わせから不具合修正のTodoも追加されており、Todo消化に力を注がなくてはならない。"
+
+Sentence 19 has a sentiment score of 0.The sentence is ""
+
+Sentence 20 has a sentiment score of 0.The sentence is "・問い合わせ対応"
+
+Sentence 21 has a sentiment score of 0.The sentence is "先週から引き続き1件。新規4件。"
+
+Sentence 22 has a sentiment score of -0.3.The sentence is "クローズ1件。質問者確認待ち2件。手持ち2件。"
+
+Sentence 23 has a sentiment score of 0.The sentence is "ワークフローのイベントハンドラのサンプル提供はオーバーサービス気味だったので、"
+
+Sentence 24 has a sentiment score of 0.1.The sentence is "今後の対応では気を付けたい。"
+
+Sentence 25 has a sentiment score of -0.5.The sentence is ""
+
+Sentence 26 has a sentiment score of 0.The sentence is "・新人ブログ"
+
+Sentence 27 has a sentiment score of 0.The sentence is "記事作成してレビュー待ち。"
+
+Sentence 28 has a sentiment score of 0.1.The sentence is ""
+
+Sentence 29 has a sentiment score of 0.2.The sentence is ""
+
+Sentence 30 has a sentiment score of -0.4.The sentence is "■課題・問題・トラブル⇒Request"
+
+Sentence 31 has a sentiment score of 0.1.The sentence is ""
+
+Sentence 32 has a sentiment score of -0.4.The sentence is ""
+
+Sentence 33 has a sentiment score of -0.4.The sentence is "■Highlight"
+
+Sentence 34 has a sentiment score of 0.The sentence is "・3.6.0Todo"
+
+Sentence 35 has a sentiment score of 0.2.The sentence is "[ite1:9/129/25]"
+
+Sentence 36 has a sentiment score of -0.6.The sentence is " -文書一覧のタイトルを非表示としたい(必達)"
+
+Sentence 37 has a sentiment score of 0.2.The sentence is " ⇒マージ済み"
+
+Sentence 38 has a sentiment score of 0.5.The sentence is " -バインダ参照ボタン_必須項目ON/OFFで配置が異なる(チャレンジA)"
+
+Sentence 39 has a sentiment score of 0.2.The sentence is " ⇒修正してプルリク作成。マージ待ち。"
+
+Sentence 40 has a sentiment score of -0.2.The sentence is ""
+
+Sentence 41 has a sentiment score of -0.1.The sentence is " [ite2:9/2610/9]"
+
+Sentence 42 has a sentiment score of 0.1.The sentence is " -ソート順を変更したときにページを1ページ目に戻してほしい(必達)"
+
+Sentence 43 has a sentiment score of 0.The sentence is " ⇒調査着手"
+
+Sentence 44 has a sentiment score of -0.1.The sentence is ""
+
+Sentence 45 has a sentiment score of -0.1.The sentence is " -ドラッグ&ドロップエリアを常時表示しておけるオプションが欲しい(必達)"
+
+Sentence 46 has a sentiment score of -0.3.The sentence is " -【バインダ参照ボタン】プルダウン形式で、閲覧画面ではリンクのあり・なしを設定で出来るようにしたい(チャレンジA)"
+
+Sentence 47 has a sentiment score of -0.7.The sentence is " -【アドオンサンプルプログラム説明書】csvOutputData記述ミス(チャレンジA)"
+
+Sentence 48 has a sentiment score of -0.9.The sentence is " ⇒未着手"
+
+Sentence 49 has a sentiment score of 0.1.The sentence is ""
+
+Sentence 50 has a sentiment score of -0.1.The sentence is ""
+
+Sentence 51 has a sentiment score of 0.The sentence is "・3.5.2Todo"
+
+Sentence 52 has a sentiment score of 0.1.The sentence is " -Sm@rtDB3.5でのformatDateの挙動(必達)"
+
+Sentence 53 has a sentiment score of -0.4.The sentence is " ⇒問い合わせ起点。未着手。すぐ終わる見込み。"
+
+Sentence 54 has a sentiment score of 0.The sentence is ""
+
+Sentence 55 has a sentiment score of 0.The sentence is ""
+
+Sentence 56 has a sentiment score of 0.1.The sentence is "・問い合わせ対応"
+
+Sentence 57 has a sentiment score of 0.1.The sentence is " -アクティビティ担当者へのメール通知について2"
+
+Sentence 58 has a sentiment score of 0.1.The sentence is " -hibiki.logにて、1秒間に1回「luxor.BatchDeleteExecutor」が出力され続ける③"
+
+Sentence 59 has a sentiment score of 0.7.The sentence is " ⇒質問者確認待ち。"
+
+Sentence 60 has a sentiment score of 0.The sentence is ""
+
+Sentence 61 has a sentiment score of 0.The sentence is " -Sm@rtDB3.5でのformatDateの挙動"
+
+Sentence 62 has a sentiment score of -0.3.The sentence is " ⇒クローズ"
+
+Sentence 63 has a sentiment score of 0.7.The sentence is ""
+
+Sentence 64 has a sentiment score of 0.1.The sentence is " -航空会社様:Sm@rtDBリビジョンアップ後、新しいhibikiエラーが出力される(Expression analysis fails)"
+
+Sentence 65 has a sentiment score of 0.5.The sentence is " -承認等実施時に[作業完了報告]というダイアログが出力される(SDB Chrome)"
+
+Sentence 66 has a sentiment score of 0.1.The sentence is " ⇒調査中"
+
+Sentence 67 has a sentiment score of 0.7.The sentence is ""
+
+Sentence 68 has a sentiment score of 0.The sentence is ""
+
+Sentence 69 has a sentiment score of 0.1.The sentence is "■Other Activity"
+
+Sentence 70 has a sentiment score of 0.1.The sentence is "・LT会"
+
+Overall Sentiment: score of 0 with magnitude of 18.3
+[0, 0.2, -0.2, 0.5, -0.3, -0.3, -0.1, 0.2, 0.1, -0.1, 0, 0.1, 0, 0, -0.6, -0.5, -0.7, -0.1, 0, 0, 0, 0, -0.3, 0, 0.1, -0.5, 0, 0, 0.1, 0.2, -0.4, 0.1, -0.4, -0.4, 0, 0.2, -0.6, 0.2, 0.5, 0.2, -0.2, -0.1, 0.1, 0, -0.1, -0.1, -0.3, -0.7, -0.9, 0.1, -0.1, 0, 0.1, -0.4, 0, 0, 0.1, 0.1, 0.1, 0.7, 0, 0, -0.3, 0.7, 0.1, 0.5, 0.1, 0.7, 0, 0.1, 0.1]
+Date: Fri, 30 Sep 2016 19:28:49 +0900
+From:山下拓郎<ta_yamashita@dreamarts.co.jp>
+Subject: [PD_WR] WR_20160930_Sm@rtDBグループ_山下拓郎
+Message-Id: <1475231329.2149905.1@moe.dreamarts.co.jp>
+
+<< WEEKLY REPORT >>
+2016年09月30日Sm@rtDBグループ山下拓郎
+
+■労働時間
+ 16年07月: 181時間10分
+ 16年08月: 187時間10分
+ 16年09月: 178時間51分(直近3ヶ月計:547時間11分)
+
+
+■総括
+・3.6.0Todo
+ite1の残Todoに取り組んだ。ite1の分は消化できたが、
+ite2のTodoにほぼ着手できていない。
+問い合わせから不具合修正のTodoも追加されており、Todo消化に力を注がなくてはならない。
+
+・問い合わせ対応
+先週から引き続き1件。新規4件。
+クローズ1件。質問者確認待ち2件。手持ち2件。
+ワークフローのイベントハンドラのサンプル提供はオーバーサービス気味だったので、
+今後の対応では気を付けたい。
+
+・新人ブログ
+記事作成してレビュー待ち。
+
+
+■課題・問題・トラブル⇒Request
+
+
+■Highlight
+・3.6.0Todo
+[ite1:9/129/25]
+ -文書一覧のタイトルを非表示としたい(必達)
+ ⇒マージ済み
+ -バインダ参照ボタン_必須項目ON/OFFで配置が異なる(チャレンジA)
+ ⇒修正してプルリク作成。マージ待ち。
+
+ [ite2:9/2610/9]
+ -ソート順を変更したときにページを1ページ目に戻してほしい(必達)
+ ⇒調査着手
+
+ -ドラッグ&ドロップエリアを常時表示しておけるオプションが欲しい(必達)
+ -【バインダ参照ボタン】プルダウン形式で、閲覧画面ではリンクのあり・なしを設定で出来るようにしたい(チャレンジA)
+ -【アドオンサンプルプログラム説明書】csvOutputData記述ミス(チャレンジA)
+ ⇒未着手
+
+
+・3.5.2Todo
+ -Sm@rtDB3.5でのformatDateの挙動(必達)
+ ⇒問い合わせ起点。未着手。すぐ終わる見込み。
+
+
+・問い合わせ対応
+ -アクティビティ担当者へのメール通知について2
+ -hibiki.logにて、1秒間に1回「luxor.BatchDeleteExecutor」が出力され続ける③
+ ⇒質問者確認待ち。
+
+ -Sm@rtDB3.5でのformatDateの挙動
+ ⇒クローズ
+
+ -航空会社様:Sm@rtDBリビジョンアップ後、新しいhibikiエラーが出力される(Expression analysis fails)
+ -承認等実施時に[作業完了報告]というダイアログが出力される(SDB Chrome)
+ ⇒調査中
+
+
+■Other Activity
+・LT会
+・ウェルカムメッセージ
+・PD&DKC勉強会
+
+
+■AR
+・Todo消化
+・問い合わせ消化
+・ウェルカムメッセージ練習
+
+
+■次週の指針、メッセージ
+・生活リズムが崩れてきているので、これを整えて高いパフォーマンスを維持できるよう努力する。
+・イスに座っている時間が長いので、腰痛にならないように工夫する。
+・応用情報の勉強をする。
+
+
+
+Sm@rtDBグループ
+山下拓郎
+ta_yamashita@dreamarts.co.jp\
+Sentence 0 has a sentiment score of 0.The sentence is "Date: Fri, 30 Sep 2016 19:28:49 +0900"
+
+Sentence 1 has a sentiment score of 0.2.The sentence is "From:山下拓郎<ta_yamashita@dreamarts.co.jp>"
+
+Sentence 2 has a sentiment score of -0.2.The sentence is "Subject: [PD_WR] WR_20160930_Sm@rtDBグループ_山下拓郎"
+
+Sentence 3 has a sentiment score of 0.5.The sentence is "Message-Id: <1475231329.2149905.1@moe.dreamarts.co.jp>"
+
+Sentence 4 has a sentiment score of -0.3.The sentence is ""
+
+Sentence 5 has a sentiment score of -0.3.The sentence is "<< WEEKLY REPORT >>"
+
+Sentence 6 has a sentiment score of -0.1.The sentence is "2016年09月30日Sm@rtDBグループ山下拓郎"

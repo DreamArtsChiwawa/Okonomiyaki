@@ -1,5 +1,8 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import sys
 from google.cloud import language
+from datetime import datetime
 
 
 def analyze(text):
@@ -52,8 +55,9 @@ def set_dict(annotations, text_list):
     mid_score = np.median(score_list)
     total_score = score
 
-    print(score_list)
-
+    #print(score_list)
+    save_fig(score_list)
+    
     # print('total score is {}'.format(sum_score))
     # print('average score is {}'.format(ave_score))
     # print('max score is {}.The Sentence is ({})'.format(max_score, text_list[score_list.index(max_score)]))
@@ -70,16 +74,7 @@ def set_dict(annotations, text_list):
 
     return dic
 
-
-if __name__ == '__main__':
-    '''
-    parser = argparse.ArgumentParser(
-        description=__doc__,
-        formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument(
-        'movie_review_filename',
-        help='The filename of the movie review you\'d like to analyze.')
-    args = parser.parse_args()
-    '''
-    print(analyze("今日はいい天気です。\n明日は天気が悪そうです。\n明後日はどうなる。"))
-    # analyze(args.movie_review_filename)
+def  save_fig(score_list)
+    n, bins, patch = plt.hist(score_list, bins=np.arange(-1.0, 1.01, 0.1))  # 度数分布表の取得   
+    #plt.savefig("fig_" + datetime.now().strftime("%Y%m%d-%H%M%S") + ".png") # ヒストグラムをファイルに出力
+    plt.savefig("fig_histgram.png")

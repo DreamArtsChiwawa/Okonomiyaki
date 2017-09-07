@@ -30,15 +30,16 @@ def messages():
 
         flag = 0
         
-        if messageText.find('週報') and messageText.find('判断')　== 1:
-            send_message(companyId, "判断したい週報を入力してください！")
+        if messageText.find('週報') >= 0 and messageText.find('判断') >= 0:
+            send_message(companyId, groupId,"判断したい週報を入力してください！")
             flag = 1
             
-        if messageText.find('<< WEEKLY REPORT >>') == 1:
+        if messageText.find('<< WEEKLY REPORT >>') >= 0:
             preprocessed_text = preprocess.preprocess(messageText) #テキストをAIに読みやすいようにする工程
+        else:
+            preprocessed_text = messageText
 
-            
-        if flag = 0:
+        if flag == 0:
             value = analyze.analyze(preprocessed_text)
             #value = dammy() #ダミーの辞書を生成 
             return_message, return_message2, return_message3 = set_message(value) #メッセージを整形
@@ -87,15 +88,50 @@ def send_message(companyId, groupId, message):
     requests.post(url, headers=headers, data=json.dumps(content))
 
 
+# Send message to Chiwawa server
+def send_file(companyId, groupId, file_path):
+    url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/files'.format(companyId, groupId)
+
+    with open(file_path, 'rb') as f:
+        binary = f.read()
+
+    headers = {
+
+        'Content-Type': 'application/json',
+
+        'X-Chiwawa-API-Token': env['CHIWAWA_API_TOKEN']
+
+    }
+
+    content = {
+
+        'file': binary,
+        'fileName': file_path
+
+    }
+
+    requests.post(url, headers=headers, data=json.dumps(content))
+
+    
+def get_score(score):
+    score = score + 1 # 0-2
+    score = score * 50 # 0-100
+    return int(score)
+
 def set_message(analyzed_value):
+    
+    maxvalue = get_score(analyzed_value['max']['score'])
+    minvalue = get_score(analyzed_value['min']['score'])
+    totalvalue = get_score(analyzed_value['total'])
+    
     message = "とってもポジティブな文章は、\n「" + analyzed_value['max']['sentence'] + \
-                "」\nで、" + str(analyzed_value['max']['score']) + "点でした！\n"
+                "」\nで、" + str(maxvalue) + "点でした！\n"
                 
                 
     message2 = "すっごくネガティブな文章は、\n「" + analyzed_value['min']['sentence'] + \
-                "」\nで、" + str(analyzed_value['min']['score']) + "点でした><\n"
+                "」\nで、" + str(minvalue) + "点でした><\n"
        
-    message3 =  "ウィークリーレポートの総計は、" + str(analyzed_value['total']) + "点でした\n" \
+    message3 =  "ウィークリーレポートの総計は、" + str(totalvalue) + "点でした\n" \
                 "来週もがんばりましょう！！"
         
     """
