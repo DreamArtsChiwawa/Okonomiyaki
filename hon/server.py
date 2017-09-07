@@ -55,7 +55,6 @@ def messages():
             month = month[0] + month[1]
             dic = analyze.open_old_WR(month + ".month")
             return_message = set_message_MAXranking(dic)
-            print(return_message)
             send_message(companyId, groupId, return_message)
 
             state = "no need analyze"
@@ -120,7 +119,10 @@ def messages():
             send_file(companyId, groupId, "./fig_histgram.png")
         print(state)
         print(messageText.find('\n'),messageText.find('。'))
-        print("MESSAGES SENDED")  # log
+        print("MESSAGES SENDED")  # logelse:
+                send_message(companyId, groupId,"「" + messageText + "」は受付ませんでした。")
+                print("! MESSAGE REJECTED")
+                state = "message rejected"
         return "OK"
 
     else:
@@ -140,6 +142,8 @@ def is_request_valid(request):
 # Send message to Chiwawa server
 def send_message(companyId, groupId, message):
     url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/messages'.format(companyId, groupId)
+
+    print(message)
 
     headers = {
 
