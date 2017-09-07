@@ -52,21 +52,21 @@ def messages():
             analyze.save_fig(analyzed_dict['score_list'])
 
             if state == "WR":  # WEEKLY REPORTだった場合のメッセージリターン
-                return_message = set_message_WR(analyzed_message)  # メッセージを整形
+                return_message = set_message_WR(analyzed_dict)  # メッセージを整形
 
                 send_message(companyId, groupId, return_message[0])  # メッセージを送信
                 send_message(companyId, groupId, return_message[1])
                 send_message(companyId, groupId, return_message[2])
 
             elif state == "long message":  # WEEKLY REPORTじゃない長文
-                return_message = set_message_LG(analyzed_message)
+                return_message = set_message_LG(analyzed_dict)
 
                 send_message(companyId, groupId, return_message[0])  # メッセージを送信
                 send_message(companyId, groupId, return_message[1])
                 send_message(companyId, groupId, return_message[2])
 
             elif state == "short message":
-                return_message = set_message_SH(analyzed_message)
+                return_message = set_message_SH(analyzed_dict)
 
                 send_message(companyId, groupId, return_message[0])
 
