@@ -101,7 +101,7 @@ def open_old_WR(info):
     path = '../pickle/' + info + '.pickle'
     key = '../pickle' + info
     with open(path, 'rb') as pcl:
-        result_pickle = pickle.load()
+        result_pickle = pickle.load(pcl)
 
     tmp = result_pickle.keys()
 
