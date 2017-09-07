@@ -51,10 +51,10 @@ def main():
     tmp = sys.argv[0]
     index = tmp.rfind('/')
     tmp = tmp[:index]
-    index = tmp.find('/')
+    index = tmp.rfind('/')
     tmp = tmp[index:]
     tmp = tmp[1:]           
-    #print(tmp)     # '20YY年XX月'が抽出できているかの確認用
+    #print("TMP: " + tmp)     # '20YY年XX月'が抽出できているかの確認用
 
     filename = tmp
     # # with open('../staff_wr_sample/WR_analyze_result.pickle', 'wb') as pcl:
