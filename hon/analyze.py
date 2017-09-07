@@ -103,9 +103,16 @@ def open_old_WR(info):
     with open(path, 'rb') as pcl:
         result_pickle = pickle.load(pcl)
 
-    tmp = result_pickle.keys()
+    filename_list = result_pickle.keys()
 
-    return tmp
+    max_score_list = []
+    max_sentence_list = []
+
+    for fname in filename_list:
+        max_score_list.append(result_pickle[fname]['max']['score'])
+        max_sentence_list.append(result_pickle[fname]['max']['sentence'])
+
+    return max_score_list
 
 
 def main():
