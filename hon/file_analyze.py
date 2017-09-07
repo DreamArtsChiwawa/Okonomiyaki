@@ -30,7 +30,7 @@ def main():
     WR_list = sys.argv
 
     #WR_list.pop()
-    del WR_list[0]
+    del WR_list[0]      # 先頭の要素(WRが置いてある場所のパス)を削除
 
     print("sys arg", sys.argv)
     print("WR LIST", WR_list)

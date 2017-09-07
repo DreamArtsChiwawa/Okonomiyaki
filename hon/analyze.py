@@ -41,13 +41,13 @@ def set_dict(annotations, text_list):
 
     for index, sentence in enumerate(annotations.sentences):
         sentence_sentiment = sentence.sentiment.score
-        try:
-            print('Sentence {} has a sentiment score of {}.The sentence is "{}"\n'.format(
-                index, sentence_sentiment, text_list[index]))
-            score_list.append(sentence_sentiment)
-        except:
-            print(score_list)
-            
+        # try:
+        #     print('Sentence {} has a sentiment score of {}.The sentence is "{}"\n'.format(
+        #         index, sentence_sentiment, text_list[index]))
+        score_list.append(sentence_sentiment)
+        # except:
+        #     print(score_list)
+
 
 
     print('Overall Sentiment: score of {} with magnitude of {}'.format(
@@ -61,7 +61,8 @@ def set_dict(annotations, text_list):
     total_score = score
 
     # print(score_list)
-    save_fig(score_list)
+    
+    #save_fig(score_list)
 
     # print('total score is {}'.format(sum_score))
     # print('average score is {}'.format(ave_score))
@@ -75,13 +76,14 @@ def set_dict(annotations, text_list):
             'ave': ave_score,
             'mid': {'score': mid_score},
             'magnitude': magnitude,
-            'total': total_score}
+            'total': total_score,
+            'score_list': score_list}
 
     return dic
 
 
 def save_fig(score_list):
-    file_name = "../test/fig_histgram.png"
+    file_name = "fig_histgram.png"
 
     n, bins, patch = plt.hist(score_list, bins=np.arange(-1.0, 1.01, 0.1))  # 度数分布表の取得   
     # plt.savefig("fig_" + datetime.now().strftime("%Y%m%d-%H%M%S") + ".png") # ヒストグラムをファイルに出力
