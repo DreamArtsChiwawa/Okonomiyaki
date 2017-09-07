@@ -17,7 +17,6 @@ def WR_analyze(WR_list, value_list):
         analyze_dict = (analyze.analyze(preprocessed_text))
         analyze_dict['WR_name'] = WR_name
         value_list.append(analyze_dict)
-        i += 1
     return value_list
 
 
