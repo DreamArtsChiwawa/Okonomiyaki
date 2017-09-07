@@ -123,6 +123,7 @@ def messages():
             send_message(companyId, groupId,"「" + messageText + "」は受付ませんでした。")
             print("! MESSAGE REJECTED")
             state = "message rejected"
+    print(message)
         return "OK"
 
     else:
@@ -142,8 +143,6 @@ def is_request_valid(request):
 # Send message to Chiwawa server
 def send_message(companyId, groupId, message):
     url = 'https://{0}.chiwawa.one/api/public/v1/groups/{1}/messages'.format(companyId, groupId)
-
-    print(message)
 
     headers = {
 
@@ -249,7 +248,8 @@ def set_message_MAXranking(analyzed_value):
     for num, maxsentense in enumerate(analyzed_value['max_sentence_list']):
         message.append("「" + maxsentense + "」は、" + maxscorelist[num] + "点でした。")
 
-    return message
+
+    return analyze.list2text(message)
 
 """
 message = 'RESULT' + \
