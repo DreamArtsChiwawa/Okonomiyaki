@@ -3,12 +3,12 @@ import preprocess
 import glob
 import pickle
 import sys
-
+from tqdm import tqdm
 
 # 入力されたファイル名のWRを全て解析
 def WR_analyze(WR_list, value_list):
 
-    for WR_name in WR_list:
+    for WR_name in tqdm(WR_list):
         with open(WR_name, 'r') as f:
             # raw_text = f.readlines()
             try:
@@ -16,7 +16,7 @@ def WR_analyze(WR_list, value_list):
             except:
                 print(WR_name)
                 continue
-        print(raw_text)
+        #print(raw_text)
         preprocessed_text = preprocess.preprocess(raw_text)
         analyze_dict = (analyze.analyze(preprocessed_text))
         analyze_dict['WR_name'] = WR_name
@@ -30,10 +30,10 @@ def main():
     WR_list = sys.argv
 
     #WR_list.pop()
-    del WR_list[0]      # 先頭の要素(WRが置いてある場所のパス)を削除
+    del WR_list[0]      # 先頭の要素(第一引数:WRが置いてある場所のパス指定)を削除
 
-    print("sys arg", sys.argv)
-    print("WR LIST", WR_list)
+    # print("sys arg", sys.argv)
+    # print("WR LIST", WR_list)
 
     value_list = []
 
