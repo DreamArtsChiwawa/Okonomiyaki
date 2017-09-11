@@ -1,8 +1,0 @@
-google-cloud-language==0.24.0
-grpcio==1.6.0
-Flask==0.12.2
-gunicorn==19.7.1
-requests==2.18.4
-numpy==1.11.1
-setuptools==36.4.0
-matplotlib==1.5.3

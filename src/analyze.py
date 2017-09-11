@@ -1,17 +1,13 @@
-import numpy as np
+import pickle
+
 import matplotlib.pyplot as plt
-import sys
-import pickle
+import numpy as np
 from google.cloud import language
-import pickle
-from datetime import datetime
-import preprocess
 
 SCORE_THRESHOLD = 0.8
 
 
 def analyze(text):
-
     language_client = language.Client()
 
     document = language_client.document_from_html(text)
@@ -26,7 +22,6 @@ def analyze(text):
 
 
 def set_dict(annotations):
-
     score = annotations.sentiment.score
     magnitude = annotations.sentiment.magnitude
     score_list = []
@@ -35,7 +30,6 @@ def set_dict(annotations):
     for index, sentence in enumerate(annotations.sentences):
         score_list.append(sentence.sentiment.score)
         sentence_list.append(sentence.content)
-   
 
     # print(text_list)
     sum_score = sum(score_list)
@@ -51,22 +45,21 @@ def set_dict(annotations):
     min_score = min(score_list)
     mid_score = np.median(score_list)
     total_score = score
-    
+
     dic = {'max': {'score': max_score, 'sentence': sentence_list[score_list.index(max_score)]},
-               'min': {'score': min_score, 'sentence': sentence_list[score_list.index(min_score)]},
-               'sum': sum_score,
-               'ave': ave_score,
-               'mid': {'score': mid_score},
-               'magnitude': magnitude,
-               'total': total_score,
-               'score_list': score_list
-               }
+           'min': {'score': min_score, 'sentence': sentence_list[score_list.index(min_score)]},
+           'sum': sum_score,
+           'ave': ave_score,
+           'mid': {'score': mid_score},
+           'magnitude': magnitude,
+           'total': total_score,
+           'score_list': score_list
+           }
 
     return dic
 
 
 def save_fig(score_list):
-
     file_name = "fig_histogram.png"
     plt.figure()
     plt.hist(score_list, bins=np.arange(-1.0, 1.01, 0.1), )  # 度数分布表の取得
@@ -110,7 +103,6 @@ def open_old_WR(info):
 
 
 def main():
-
     print(open_old_WR('staff_wr_sample'))
 
 
