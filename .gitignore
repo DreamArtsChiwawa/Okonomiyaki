@@ -1,6 +1,4 @@
 
 .idea/
-test/*
 .DS_Store
-*/__pychache__
-staff_wr_sample
+staff_wr_sample/
