@@ -1,5 +1,6 @@
 
 .idea/
 test/*
-/*/__pycache__/*
+.DS_Store
+*/__pychache__
 staff_wr_sample/*
