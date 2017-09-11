@@ -1,4 +1,5 @@
 import os
+import os.path
 import json
 import requests
 from flask import Flask, request
@@ -74,6 +75,9 @@ def messages():
             month = month.split('/')
             month = month[0] + month[1]
             dic = analyze.open_old_WR(month + ".month")
+            if os.path.exists('fig_histogram.png'):
+                os.remove('fig_histogram.png')
+            
             analyze.save_fig(dic['all_score_list'])
             send_file(companyId, groupId, 'fig_histogram.png')
             state = "no need analyze"

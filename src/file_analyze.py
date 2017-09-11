@@ -11,24 +11,25 @@ def WR_analyze(WR_list):
     week_dic = {}
 
     for WR_name in tqdm(WR_list):
-
-        with open(WR_name, 'r') as f:
-            try:
-                raw_text = f.read()
-            except :
-                print(WR_name, "READ ERROR")
-                continue
-
-        preprocessed_text = preprocess.preprocess(raw_text)
-
         try:
+            with open(WR_name, 'r') as f:
+                try:
+                    raw_text = f.read()
+                
+                except:
+                    print(WR_name, "READ ERROR")
+                    continue
+         
+            preprocessed_text = preprocess.preprocess(raw_text)
+            if(len(preprocessed_text) <= 0):
+                continue
             analyze_dict = (analyze.analyze(preprocessed_text))
+
+            week_dic[WR_name] = analyze_dict
         except:
-            print("DICTIONARY ERROR", preprocessed_text)
-            exit(1)
-
-        week_dic[WR_name] = analyze_dict
-
+            print(WR_name, "SOME ERROR")
+            continue
+            
     return week_dic
 
 
